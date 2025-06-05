@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* New Color Palette - Light Mode */
+    --background: 0 0% 100%; /* White */
+    --foreground: 0 0% 27%; /* #444444 Dark Gray */
+    --card: 0 0% 96%; /* Light Gray #F5F5F5 */
+    --card-foreground: 0 0% 27%; /* Dark Gray text on cards */
+    --popover: 0 0% 100%; /* White */
+    --popover-foreground: 0 0% 27%; /* Dark Gray text on popovers */
+    
+    --primary: 353 95% 46%; /* Red #E3061D */
+    --primary-foreground: 0 0% 100%; /* White text on primary */
+    
+    --secondary: 5 87% 48%; /* Other Red #DA291C */
+    --secondary-foreground: 0 0% 100%; /* White text on secondary */
+    
+    --muted: 0 0% 94%; /* Light Gray #F0F0F0 for muted backgrounds */
+    --muted-foreground: 0 0% 45%; /* Medium Gray #737373 for muted text */
+    
+    --accent: 240 44% 30%; /* Dark Blue/Purple #2A2A70 for accents */
+    --accent-foreground: 0 0% 100%; /* White text on accent */
+    
+    --destructive: 353 80% 50%; /* A distinct, slightly more vibrant red for destructive actions */
+    --destructive-foreground: 0 0% 100%; /* White text on destructive */
+    
+    --border: 0 0% 87%; /* Light Gray Border #DDD */
+    --input: 0 0% 98%; /* Off-white #FAFAFA for input backgrounds */
+    --input-foreground: 0 0% 27%; /* Dark gray text in inputs */
+    --ring: 353 95% 55%; /* Brighter red for focus rings */
+
+    --chart-1: 353 95% 50%; 
+    --chart-2: 5 87% 50%;   
+    --chart-3: 240 44% 40%; 
+    --chart-4: 353 95% 70%; 
+    --chart-5: 240 44% 60%; 
+
+    --radius: 0.5rem;
+
+    /* Footer specific (Light Mode) */
+    --footer-background: 0 0% 10%; /* Very dark gray, almost black #1A1A1A */
+    --footer-foreground: 0 0% 85%; /* Lighter gray for footer text #D9D9D9 */
+
+    /* Accessibility CSS Variables */
+    --font-scale-offset: 0rem;
+    --letter-spacing-offset: 0em;
+    --line-height-offset: 0;
+  }
+
+  .dark {
+    /* New Color Palette - Dark Mode */
+    --background: 247 50% 10%; /* Very dark purple, from #12094c but a bit more neutral: #0D0C1F */
+    --foreground: 0 0% 95%; /* Off-white #F2F2F2 */
+    
+    --card: 247 40% 15%; /* Darker purple #1C1736 */
+    --card-foreground: 0 0% 95%; /* Off-white text on cards */
+    
+    --popover: 247 50% 10%; /* Same as background */
+    --popover-foreground: 0 0% 95%; /* Off-white text on popovers */
+    
+    --primary: 353 95% 55%; /* Brighter Red for dark mode #F24452 */
+    --primary-foreground: 0 0% 100%; /* White text on primary */
+    
+    --secondary: 5 87% 55%; /* Brighter Other Red for dark mode #EC5C4D */
+    --secondary-foreground: 0 0% 100%; /* White text on secondary */
+    
+    --muted: 247 30% 20%; /* Muted dark purple #262240 */
+    --muted-foreground: 0 0% 70%; /* Medium-light Gray #B3B3B3 for muted text */
+    
+    --accent: 240 44% 55%; /* Brighter Blue/Purple for accents in dark mode #7070B8 (from #2A2A70) */
+    --accent-foreground: 0 0% 100%; /* White text on accent */
+    
+    --destructive: 353 95% 60%; /* Even brighter red for destructive in dark mode #F55F6D */
+    --destructive-foreground: 0 0% 100%; /* White text on destructive */
+    
+    --border: 247 30% 28%; /* Dark purple border #373159 */
+    --input: 247 40% 15%; /* Same as card for input backgrounds */
+    --input-foreground: 0 0% 95%; /* Off-white text in inputs */
+    --ring: 353 95% 60%; /* Brighter red for focus rings */
+
+    --chart-1: 353 95% 60%;
+    --chart-2: 5 87% 60%;
+    --chart-3: 240 44% 50%;
+    --chart-4: 353 95% 75%;
+    --chart-5: 240 44% 70%;
+
+    /* Footer specific (Dark Mode) */
+    --footer-background: 0 0% 5%; /* Almost black #0D0D0D */
+    --footer-foreground: 0 0% 70%; /* Lighter gray for footer text #B3B3B3 */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    line-height: calc(1.6 + var(--line-height-offset)); 
+    letter-spacing: var(--letter-spacing-offset);
+  }
+  html {
+    scroll-behavior: smooth;
+    font-size: calc(16px + var(--font-scale-offset));
+  }
+
+  html.acc-text-scaled h1, html.acc-text-scaled h2, html.acc-text-scaled h3, html.acc-text-scaled h4, html.acc-text-scaled h5, html.acc-text-scaled h6,
+  html.acc-text-scaled p, html.acc-text-scaled li, html.acc-text-scaled span, html.acc-text-scaled a, html.acc-text-scaled button, 
+  html.acc-text-scaled label, html.acc-text-scaled input, html.acc-text-scaled textarea, html.acc-text-scaled div {
+    font-size: calc(1em + var(--font-scale-offset)) !important;
+  }
+  html.acc-text-scaled h1 { font-size: calc(2.25rem + var(--font-scale-offset)) !important; }
+  html.acc-text-scaled h2 { font-size: calc(1.75rem + var(--font-scale-offset)) !important; }
+  html.acc-text-scaled h3 { font-size: calc(1.5rem + var(--font-scale-offset)) !important; }
+  html.acc-text-scaled h4 { font-size: calc(1.25rem + var(--font-scale-offset)) !important; }
+  
+  html.acc-letter-spacing-scaled body,
+  html.acc-letter-spacing-scaled h1, html.acc-letter-spacing-scaled h2, html.acc-letter-spacing-scaled h3, html.acc-letter-spacing-scaled h4, html.acc-letter-spacing-scaled h5, html.acc-letter-spacing-scaled h6,
+  html.acc-letter-spacing-scaled p, html.acc-letter-spacing-scaled li, html.acc-letter-spacing-scaled span, html.acc-letter-spacing-scaled a, html.acc-letter-spacing-scaled button, 
+  html.acc-letter-spacing-scaled label, html.acc-letter-spacing-scaled input, html.acc-letter-spacing-scaled textarea, html.acc-letter-spacing-scaled div {
+    letter-spacing: var(--letter-spacing-offset) !important;
+  }
+
+  html.acc-line-height-scaled body,
+  html.acc-line-height-scaled h1, html.acc-line-height-scaled h2, html.acc-line-height-scaled h3, html.acc-line-height-scaled h4, html.acc-line-height-scaled h5, html.acc-line-height-scaled h6,
+  html.acc-line-height-scaled p, html.acc-line-height-scaled li, html.acc-line-height-scaled span, html.acc-line-height-scaled a, html.acc-line-height-scaled button, 
+  html.acc-line-height-scaled label, html.acc-line-height-scaled input, html.acc-line-height-scaled textarea, html.acc-line-height-scaled div {
+     line-height: calc(1.6 + var(--line-height-offset)) !important;
+  }
+  
+  html.acc-filters-active {
+    /* filter is applied via inline style by JS */
+  }
+
+  html.acc-underline-links a {
+    text-decoration: underline !important;
+    text-decoration-color: hsl(var(--primary)) !important;
+    text-underline-offset: 2px;
+  }
+
+  /* Global styles for h1-h6 */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+    color: hsl(0 0% 0%); /* Black for light mode */
+  }
+
+  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    color: hsl(0 0% 100%); /* White for dark mode */
+  }
+}
+
+#custom-cursor-element {
+  position: fixed;
+  width: 20px; 
+  height: 20px;
+  border: 2px solid hsl(var(--secondary)); 
+  background-color: hsla(var(--secondary) / 0.3);
+  border-radius: 50%;
+  pointer-events: none; 
+  transform: translate(-50%, -50%); 
+  z-index: 2147483647; 
+  transition: width 0.1s ease-out, height 0.1s ease-out; 
+  display: none; 
+}
+
+.reading-guide-line {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 4px; 
+  background-color: hsl(var(--secondary) / 0.6); 
+  opacity: 0.8;
+  pointer-events: none; 
+  z-index: 2147483647; 
+  transition: top 0.05s ease-out; 
+  box-shadow: 0 0 5px hsl(var(--secondary));
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
