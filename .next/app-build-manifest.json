@@ -1,12 +1,10 @@
 {
   "pages": {
     "/_not-found/page": [
-      "static/chunks/node_modules_next_dist_1a6ee436._.js",
-      "static/chunks/src_app_favicon_ico_mjs_79b6a596._.js",
       "static/chunks/src_app_globals_b805903d.css",
-      "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_6403f95a._.js",
+      "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_fcec6479._.js",
       "static/chunks/src_783d324f._.js",
-      "static/chunks/node_modules_20cf6d4c._.js",
+      "static/chunks/node_modules_e81ac62b._.js",
       "static/chunks/src_app_layout_tsx_f0e4c1a2._.js",
       "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_49a6ea35._.js",
       "static/chunks/node_modules_next_dist_compiled_2ce9398a._.js",
@@ -16,17 +14,12 @@
       "static/chunks/_e69f0d32._.js",
       "static/chunks/_be317ff2._.js"
     ],
-    "/noticias/page": [
-      "static/chunks/node_modules_next_dist_1a6ee436._.js",
-      "static/chunks/src_app_favicon_ico_mjs_79b6a596._.js",
+    "/oferta-academica/page": [
       "static/chunks/src_app_globals_b805903d.css",
-      "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_6403f95a._.js",
+      "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_fcec6479._.js",
       "static/chunks/src_783d324f._.js",
-      "static/chunks/node_modules_20cf6d4c._.js",
+      "static/chunks/node_modules_e81ac62b._.js",
       "static/chunks/src_app_layout_tsx_f0e4c1a2._.js",
-      "static/chunks/node_modules_25d80f27._.js",
-      "static/chunks/src_ba4f574d._.js",
-      "static/chunks/src_app_noticias_page_tsx_cba5b78e._.js",
       "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_49a6ea35._.js",
       "static/chunks/node_modules_next_dist_compiled_2ce9398a._.js",
       "static/chunks/node_modules_next_dist_client_43e3ffb8._.js",
@@ -36,15 +29,13 @@
       "static/chunks/_be317ff2._.js"
     ],
     "/page": [
-      "static/chunks/node_modules_next_dist_1a6ee436._.js",
-      "static/chunks/src_app_favicon_ico_mjs_79b6a596._.js",
       "static/chunks/src_app_globals_b805903d.css",
-      "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_6403f95a._.js",
+      "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_fcec6479._.js",
       "static/chunks/src_783d324f._.js",
-      "static/chunks/node_modules_20cf6d4c._.js",
+      "static/chunks/node_modules_e81ac62b._.js",
       "static/chunks/src_app_layout_tsx_f0e4c1a2._.js",
       "static/chunks/_4b41aaf2._.js",
-      "static/chunks/src_app_page_tsx_cba5b78e._.js",
+      "static/chunks/src_app_page_tsx_24c54b74._.js",
       "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_49a6ea35._.js",
       "static/chunks/node_modules_next_dist_compiled_2ce9398a._.js",
       "static/chunks/node_modules_next_dist_client_43e3ffb8._.js",
