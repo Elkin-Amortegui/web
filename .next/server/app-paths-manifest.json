@@ -1,5 +1,6 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
+<<<<<<< HEAD
   "/actividades/page": "app/actividades/page.js",
   "/contacto/page": "app/contacto/page.js",
   "/inscripciones/page": "app/inscripciones/page.js",
@@ -20,4 +21,8 @@
   "/oferta-academica/[languageName]/page": "app/oferta-academica/[languageName]/page.js",
   "/tramites/[slug]/page": "app/tramites/[slug]/page.js",
   "/tutoriales/[slug]/page": "app/tutoriales/[slug]/page.js"
+=======
+  "/oferta-academica/page": "app/oferta-academica/page.js",
+  "/page": "app/page.js"
+>>>>>>> 22eb6cd7b9849edf67d85350b6207828319ed81b
 }
