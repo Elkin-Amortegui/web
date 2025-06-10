@@ -1,6 +1,6 @@
 
 export type TargetAudience =
-  | 'Estudiantes y Comunidad' // Fusionado y renombrado
+  | 'Estudiantes Extensión a la Comunidad' // Fusionado y renombrado
   | 'Padres de Familia'
   | 'Docente'
   | 'Estudiantes Pregrado (Plan BULL)'
@@ -25,7 +25,7 @@ export const tutorialesData: Tutorial[] = [
     slug: 'acceso-moodle-estudiantes',
     title: 'Guía de Acceso a Moodle para Estudiantes',
     date: '2024-03-10',
-    targetAudience: ['Estudiantes y Comunidad', 'Estudiantes Pregrado (Plan BULL)'],
+    targetAudience: ['Estudiantes Extensión a la Comunidad', 'Estudiantes Pregrado (Plan BULL)'],
     excerpt: 'Aprende cómo ingresar a la plataforma Moodle, encontrar tus cursos y navegar por los recursos disponibles.',
     detailedContent: `
       <h3 class="text-xl font-semibold text-primary mb-3">Introducción</h3>
@@ -104,7 +104,7 @@ export const tutorialesData: Tutorial[] = [
     slug: 'solicitud-constancias-online-video',
     title: 'Tutorial: Solicitud de Constancias en Línea (Video)',
     date: '2024-04-05',
-    targetAudience: ['Estudiantes y Comunidad', 'General'],
+    targetAudience: ['Estudiantes Extensión a la Comunidad', 'General'],
     excerpt: 'Descubre cómo solicitar tus constancias de estudio de forma rápida y sencilla a través de nuestro nuevo portal.',
     detailedContent: `
       <h3 class="text-xl font-semibold text-primary mb-3">Facilitando Trámites</h3>
@@ -128,7 +128,7 @@ export const tutorialesData: Tutorial[] = [
     slug: 'uso-recursos-biblioteca-digital',
     title: 'Uso de Recursos de la Biblioteca Digital',
     date: '2024-07-10',
-    targetAudience: ['Estudiantes y Comunidad', 'Docente', 'Estudiantes Pregrado (Plan BULL)'],
+    targetAudience: ['Estudiantes Extensión a la Comunidad', 'Docente', 'Estudiantes Pregrado (Plan BULL)'],
     excerpt: 'Explora cómo acceder y utilizar los vastos recursos digitales que ofrece la biblioteca para el aprendizaje de idiomas.',
     detailedContent: `
       <h3 class="text-xl font-semibold text-primary mb-3">Potencia tu Aprendizaje</h3>

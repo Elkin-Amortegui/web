@@ -19,7 +19,7 @@ export const guiasData: Guide[] = [
     slug: 'inscripcion-cursos-extension',
     title: 'Guía Completa: Inscripción a Cursos de Extensión',
     date: '2024-05-15',
-    targetAudience: ['Estudiantes y Comunidad', 'General'],
+    targetAudience: ['Estudiantes Extensión a la Comunidad', 'General'],
     excerpt: 'Pasos detallados para inscribirte en nuestros cursos de extensión, desde la selección hasta el pago.',
     image: 'https://placehold.co/600x800/3498db/ffffff?text=Guía+Inscripción',
     aiHint: 'registration form guide',
@@ -55,7 +55,7 @@ export const guiasData: Guide[] = [
     slug: 'preparacion-examen-bull',
     title: 'Guía de Preparación para Examen Plan BULL',
     date: '2024-06-01',
-    targetAudience: ['Estudiantes Pregrado (Plan BULL)'],
+    targetAudience: ['Estudiantes Pregrado (Plan BULL)', 'Docente'], // Añadido 'Docente'
     excerpt: 'Consejos, recursos y estructura del examen de inglés para el Plan Bilingüe Universitario Llanero (BULL).',
     image: 'https://placehold.co/600x800/2ecc71/ffffff?text=Plan+BULL+Prep',
     aiHint: 'exam preparation study',
@@ -92,4 +92,37 @@ export const guiasData: Guide[] = [
       </ul>
     `,
   },
+  { // Nueva guía para Padres de Familia
+    id: 'guia3-padres',
+    slug: 'acompanamiento-aprendizaje-idiomas',
+    title: 'Guía para Padres: Acompañamiento en el Aprendizaje de Idiomas',
+    date: '2024-07-20',
+    targetAudience: ['Padres de Familia'],
+    excerpt: 'Consejos y recursos para apoyar a sus hijos en el proceso de aprendizaje de un nuevo idioma en el Centro de Idiomas.',
+    image: 'https://placehold.co/600x800/e91e63/ffffff?text=Guía+Padres',
+    aiHint: 'parent child studying',
+    detailedContent: `
+      <h3 class="text-xl font-semibold text-primary mb-3">Apoyando el Viaje Lingüístico de sus Hijos</h3>
+      <p class="mb-4">Como padre o acudiente, su rol es fundamental en el éxito del aprendizaje de idiomas de sus hijos. Esta guía ofrece estrategias y recursos para un acompañamiento efectivo.</p>
+      
+      <h4 class="text-lg font-semibold text-primary mt-4 mb-2">Fomentar un Ambiente Positivo</h4>
+      <p class="mb-3">Cree un entorno en casa que valore el aprendizaje de idiomas. Muestre interés por lo que aprenden y celebre sus progresos.</p>
+      <ul class="list-disc list-inside space-y-1 mb-3 pl-4">
+        <li>Establezca rutinas de estudio consistentes pero flexibles.</li>
+        <li>Utilice recursos lúdicos como juegos, canciones o películas en el idioma que estudian.</li>
+        <li>Evite presionar excesivamente; el aprendizaje debe ser una experiencia positiva.</li>
+      </ul>
+
+      <h4 class="text-lg font-semibold text-primary mt-4 mb-2">Comunicación con el Centro de Idiomas</h4>
+      <p class="mb-3">Manténgase en contacto con los docentes y la coordinación para conocer el progreso de su hijo y resolver inquietudes.</p>
+      <ul class="list-disc list-inside space-y-1 mb-3 pl-4">
+        <li>Asista a las reuniones informativas y de entrega de resultados.</li>
+        <li>Revise los comunicados y la plataforma Moodle (si aplica para el curso de su hijo).</li>
+        <li>Consulte nuestros <a href="/tutoriales" class="text-secondary hover:underline">tutoriales para padres</a> para entender mejor nuestras plataformas.</li>
+      </ul>
+
+      <h4 class="text-lg font-semibold text-primary mt-4 mb-2">Recursos Adicionales</h4>
+      <p>Explore junto a sus hijos aplicaciones educativas, libros y contenido en línea que complementen su aprendizaje.</p>
+    `,
+  }
 ];

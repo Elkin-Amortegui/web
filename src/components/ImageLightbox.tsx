@@ -4,7 +4,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogTrigger, DialogClose } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTrigger, DialogClose, DialogTitle } from '@/components/ui/dialog'; // Added DialogTitle
 import { X, ZoomIn, ZoomOut, RotateCcw } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -93,6 +93,7 @@ export default function ImageLightbox({
         onInteractOutside={handleClose}
         onMouseUp={handleMouseUp} // Handle mouse up on content for smoother drag release
       >
+        <DialogTitle className="sr-only">{`Visor de imagen: ${alt}`}</DialogTitle> {/* Added sr-only DialogTitle */}
         <div className="absolute top-2 right-2 z-20 flex gap-2">
           <Button variant="outline" size="icon" onClick={handleZoomIn} aria-label="Acercar imagen">
             <ZoomIn className="h-5 w-5" />
