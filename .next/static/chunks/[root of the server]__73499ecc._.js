@@ -7426,7 +7426,7 @@ class Router {
                 if (!staticFilterData && routerFilterSValue) {
                     staticFilterData = routerFilterSValue ? routerFilterSValue : undefined;
                 }
-                const routerFilterDValue = ("TURBOPACK compile-time value", JSON.parse('{"numItems":5,"errorRate":0.0001,"numBits":96,"numHashes":14,"bitArray":[0,1,1,1,0,0,1,1,1,1,1,1,1,0,0,1,1,0,0,0,1,0,0,0,0,1,0,1,0,1,0,0,1,0,0,0,0,1,1,1,1,1,0,0,1,1,1,1,1,1,0,0,1,1,0,1,0,0,0,1,1,1,1,0,0,1,1,0,1,1,0,0,1,1,1,0,1,0,1,1,0,1,1,1,1,1,0,0,0,0,1,1,0,0,0,0]}'));
+                const routerFilterDValue = ("TURBOPACK compile-time value", JSON.parse('{"numItems":6,"errorRate":0.0001,"numBits":116,"numHashes":14,"bitArray":[0,1,0,0,0,1,0,0,1,1,1,1,0,1,0,1,0,1,1,1,1,1,0,1,1,0,1,0,0,0,1,0,0,1,0,1,0,1,1,1,1,1,1,1,0,1,1,1,1,1,0,0,0,0,0,1,1,1,0,1,0,1,1,0,1,1,0,0,0,1,0,0,1,0,1,0,0,0,1,1,1,0,1,0,0,0,0,1,1,1,1,1,1,1,0,0,0,1,1,1,0,1,0,1,1,0,0,1,0,1,0,1,1,0,0,1]}'));
                 if (!dynamicFilterData && routerFilterDValue) {
                     dynamicFilterData = routerFilterDValue ? routerFilterDValue : undefined;
                 }

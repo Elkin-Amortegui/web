@@ -1,31 +1,45 @@
 
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useEffect, useMemo, Suspense } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { BookOpen, Film, Users, ShieldQuestion, Briefcase, GraduationCap, Landmark } from 'lucide-react';
-import { tutorialesData, type Tutorial, type TargetAudience } from './TutorialData';
+import { BookOpen, Film, Users, ShieldQuestion, Briefcase, GraduationCap, Landmark, UserCheck, UserRound, UserCog } from 'lucide-react'; // Added new icons
+import { tutorialesData, type Tutorial, type TargetAudienceSlug, audienceSlugMap } from './TutorialData';
 import { guiasData, type Guide } from '@/app/guias/GuideData'; 
 import { format, parseISO } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { cn } from '@/lib/utils';
 
-const audienceFilters: { label: string; value: TargetAudience; icon: React.ElementType }[] = [
-  { label: 'Estudiantes Extensión a la Comunidad', value: 'Estudiantes Extensión a la Comunidad', icon: Users },
-  { label: 'Padres de Familia', value: 'Padres de Familia', icon: ShieldQuestion },
-  { label: 'Docentes', value: 'Docente', icon: Briefcase },
-  { label: 'Plan BULL', value: 'Estudiantes Pregrado (Plan BULL)', icon: GraduationCap },
+const audienceFilters: { label: string; value: TargetAudienceSlug; icon: React.ElementType }[] = [
+  { label: audienceSlugMap['extension-comunidad'], value: 'extension-comunidad', icon: UserCheck },
+  { label: audienceSlugMap['padres-familia'], value: 'padres-familia', icon: UserRound },
+  { label: audienceSlugMap['docente'], value: 'docente', icon: UserCog },
+  { label: audienceSlugMap['plan-bull'], value: 'plan-bull', icon: GraduationCap },
 ];
 
 type ContentType = 'tutoriales' | 'guias';
 
-export default function TutorialesGuiasPage() {
-  const [selectedAudience, setSelectedAudience] = useState<TargetAudience | null>(null);
+function TutorialesGuiasPageComponent() {
+  const searchParams = useSearchParams();
+  const initialAudience = searchParams.get('audience') as TargetAudienceSlug | null;
+
+  const [selectedAudience, setSelectedAudience] = useState<TargetAudienceSlug | null>(initialAudience);
   const [selectedContentType, setSelectedContentType] = useState<ContentType>('tutoriales');
+
+  useEffect(() => {
+    // If initialAudience is valid and different from current, update selectedAudience
+    if (initialAudience && audienceFilters.some(f => f.value === initialAudience)) {
+      setSelectedAudience(initialAudience);
+      setSelectedContentType('tutoriales'); // Default to tutoriales when audience changes via query
+    }
+  }, [initialAudience]);
+
 
   const filteredTutorials = useMemo(() => {
     if (!selectedAudience) return []; 
@@ -68,20 +82,21 @@ export default function TutorialesGuiasPage() {
                 <Button
                   variant={selectedAudience === filter.value ? 'default' : 'outline'}
                   size="lg"
-                  className={`w-full h-16 text-base transition-all duration-200 ease-in-out transform hover:scale-105 flex flex-col items-center justify-center p-2 ${selectedAudience === filter.value ? 'bg-primary text-primary-foreground shadow-lg' : 'border-primary/50 hover:bg-primary/10'}`}
+                  className={cn(
+                    `w-full h-auto min-h-[4rem] text-sm md:text-base transition-all duration-200 ease-in-out transform hover:scale-105 flex flex-col items-center justify-center p-2 py-3`,
+                    selectedAudience === filter.value ? 'bg-primary text-primary-foreground shadow-lg' : 'border-primary/50 hover:bg-primary/10'
+                  )}
                   onClick={() => {
                     setSelectedAudience(filter.value);
                     setSelectedContentType('tutoriales'); 
                   }}
-                  aria-label={`Filtrar contenido por ${filter.label}`}
+                  aria-label={`Filtrar por ${filter.label}`}
                 >
-                  <filter.icon className="mb-1 h-6 w-6" />
-                  <span className="text-center text-sm">{filter.label}</span>
+                  <filter.icon className="mb-1 h-5 w-5 md:h-6 md:w-6" />
+                  <span className="text-center text-xs md:text-sm whitespace-normal leading-tight">{filter.label}</span>
                 </Button>
               </TooltipTrigger>
-              <TooltipContent>
-                <p>Ver tutoriales y guías para {filter.label}</p>
-              </TooltipContent>
+              <TooltipContent><p>Ver tutoriales y guías para {filter.label}</p></TooltipContent>
             </Tooltip>
           ))}
         </div>
@@ -93,22 +108,22 @@ export default function TutorialesGuiasPage() {
             <TabsList className="grid w-full grid-cols-2 h-14">
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <TabsTrigger value="tutoriales" className="text-lg h-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+                  <TabsTrigger value="tutoriales" className="text-base md:text-lg h-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
                     <Film className="mr-2 h-5 w-5" /> Tutoriales
                   </TabsTrigger>
                 </TooltipTrigger>
-                <TooltipContent><p>Ver Tutoriales para {selectedAudience}</p></TooltipContent>
+                <TooltipContent><p>Ver Tutoriales para {audienceSlugMap[selectedAudience]}</p></TooltipContent>
               </Tooltip>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <TabsTrigger value="guias" className="text-lg h-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+                  <TabsTrigger value="guias" className="text-base md:text-lg h-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
                     <BookOpen className="mr-2 h-5 w-5" /> Guías
                   </TabsTrigger>
                 </TooltipTrigger>
-                <TooltipContent><p>Ver Guías para {selectedAudience}</p></TooltipContent>
+                <TooltipContent><p>Ver Guías para {audienceSlugMap[selectedAudience]}</p></TooltipContent>
               </Tooltip>
             </TabsList>
-            <TabsContent value="tutoriales" key={`tutorials-${selectedAudience}`}> {/* Added key */}
+            <TabsContent value="tutoriales" key={`tutorials-${selectedAudience}`}>
               {filteredTutorials.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
                   {filteredTutorials.map((tutorial) => (
@@ -163,10 +178,10 @@ export default function TutorialesGuiasPage() {
                   ))}
                 </div>
               ) : (
-                <p className="text-center text-muted-foreground py-10 text-lg">No hay tutoriales disponibles para {selectedAudience}.</p>
+                <p className="text-center text-muted-foreground py-10 text-lg">No hay tutoriales disponibles para {audienceSlugMap[selectedAudience]}.</p>
               )}
             </TabsContent>
-            <TabsContent value="guias" key={`guides-${selectedAudience}`}> {/* Added key */}
+            <TabsContent value="guias" key={`guides-${selectedAudience}`}>
               {filteredGuides.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
                   {filteredGuides.map((guide) => (
@@ -219,7 +234,7 @@ export default function TutorialesGuiasPage() {
                   ))}
                 </div>
               ) : (
-                <p className="text-center text-muted-foreground py-10 text-lg">No hay guías disponibles para {selectedAudience}.</p>
+                <p className="text-center text-muted-foreground py-10 text-lg">No hay guías disponibles para {audienceSlugMap[selectedAudience]}.</p>
               )}
             </TabsContent>
           </Tabs>
@@ -233,5 +248,14 @@ export default function TutorialesGuiasPage() {
         </div>
        )}
     </div>
+  );
+}
+
+// Wrap the component with Suspense for useSearchParams
+export default function TutorialesGuiasPage() {
+  return (
+    <Suspense fallback={<div>Cargando...</div>}>
+      <TutorialesGuiasPageComponent />
+    </Suspense>
   );
 }

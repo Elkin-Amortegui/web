@@ -1,12 +1,12 @@
 
-import type { TargetAudience } from '@/app/tutoriales/TutorialData'; // Using the updated type
+import type { TargetAudienceSlug } from '@/app/tutoriales/TutorialData';
 
 export interface Guide {
   id: string;
   slug: string;
   title: string;
   date: string;
-  targetAudience: TargetAudience[]; 
+  targetAudience: TargetAudienceSlug[]; 
   excerpt: string;
   image: string; 
   aiHint: string;
@@ -19,7 +19,7 @@ export const guiasData: Guide[] = [
     slug: 'inscripcion-cursos-extension',
     title: 'Guía Completa: Inscripción a Cursos de Extensión',
     date: '2024-05-15',
-    targetAudience: ['Estudiantes Extensión a la Comunidad', 'General'],
+    targetAudience: ['extension-comunidad', 'general'],
     excerpt: 'Pasos detallados para inscribirte en nuestros cursos de extensión, desde la selección hasta el pago.',
     image: 'https://placehold.co/600x800/3498db/ffffff?text=Guía+Inscripción',
     aiHint: 'registration form guide',
@@ -55,7 +55,7 @@ export const guiasData: Guide[] = [
     slug: 'preparacion-examen-bull',
     title: 'Guía de Preparación para Examen Plan BULL',
     date: '2024-06-01',
-    targetAudience: ['Estudiantes Pregrado (Plan BULL)', 'Docente'], // Añadido 'Docente'
+    targetAudience: ['plan-bull', 'docente'], 
     excerpt: 'Consejos, recursos y estructura del examen de inglés para el Plan Bilingüe Universitario Llanero (BULL).',
     image: 'https://placehold.co/600x800/2ecc71/ffffff?text=Plan+BULL+Prep',
     aiHint: 'exam preparation study',
@@ -92,12 +92,12 @@ export const guiasData: Guide[] = [
       </ul>
     `,
   },
-  { // Nueva guía para Padres de Familia
+  { 
     id: 'guia3-padres',
     slug: 'acompanamiento-aprendizaje-idiomas',
     title: 'Guía para Padres: Acompañamiento en el Aprendizaje de Idiomas',
     date: '2024-07-20',
-    targetAudience: ['Padres de Familia'],
+    targetAudience: ['padres-familia'],
     excerpt: 'Consejos y recursos para apoyar a sus hijos en el proceso de aprendizaje de un nuevo idioma en el Centro de Idiomas.',
     image: 'https://placehold.co/600x800/e91e63/ffffff?text=Guía+Padres',
     aiHint: 'parent child studying',
@@ -118,7 +118,7 @@ export const guiasData: Guide[] = [
       <ul class="list-disc list-inside space-y-1 mb-3 pl-4">
         <li>Asista a las reuniones informativas y de entrega de resultados.</li>
         <li>Revise los comunicados y la plataforma Moodle (si aplica para el curso de su hijo).</li>
-        <li>Consulte nuestros <a href="/tutoriales" class="text-secondary hover:underline">tutoriales para padres</a> para entender mejor nuestras plataformas.</li>
+        <li>Consulte nuestros <a href="/tutoriales?audience=padres-familia" class="text-secondary hover:underline">tutoriales para padres</a> para entender mejor nuestras plataformas.</li>
       </ul>
 
       <h4 class="text-lg font-semibold text-primary mt-4 mb-2">Recursos Adicionales</h4>

@@ -1,17 +1,24 @@
 
-export type TargetAudience =
-  | 'Estudiantes Extensión a la Comunidad' // Fusionado y renombrado
-  | 'Padres de Familia'
-  | 'Docente'
-  | 'Estudiantes Pregrado (Plan BULL)'
-  | 'General'; // Se mantiene por si hay contenido que no encaja en los 4 principales
+export type TargetAudienceSlug =
+  | 'extension-comunidad'
+  | 'padres-familia'
+  | 'docente'
+  | 'plan-bull'
+  | 'general';
 
+export const audienceSlugMap: Record<TargetAudienceSlug, string> = {
+  'extension-comunidad': 'Estudiantes Extensión a la Comunidad',
+  'padres-familia': 'Padres de Familia',
+  'docente': 'Docente',
+  'plan-bull': 'Estudiantes Pregrado (Plan BULL)',
+  'general': 'General',
+};
 export interface Tutorial {
   id: string;
   slug: string;
   title: string;
   date: string;
-  targetAudience: TargetAudience[];
+  targetAudience: TargetAudienceSlug[];
   excerpt: string;
   detailedContent: string; 
   youtubeVideoId: string;
@@ -25,7 +32,7 @@ export const tutorialesData: Tutorial[] = [
     slug: 'acceso-moodle-estudiantes',
     title: 'Guía de Acceso a Moodle para Estudiantes',
     date: '2024-03-10',
-    targetAudience: ['Estudiantes Extensión a la Comunidad', 'Estudiantes Pregrado (Plan BULL)'],
+    targetAudience: ['extension-comunidad', 'plan-bull'],
     excerpt: 'Aprende cómo ingresar a la plataforma Moodle, encontrar tus cursos y navegar por los recursos disponibles.',
     detailedContent: `
       <h3 class="text-xl font-semibold text-primary mb-3">Introducción</h3>
@@ -54,7 +61,7 @@ export const tutorialesData: Tutorial[] = [
     slug: 'gestion-calificaciones-profesores',
     title: 'Gestión de Calificaciones en Plataforma para Profesores',
     date: '2024-03-15',
-    targetAudience: ['Docente'],
+    targetAudience: ['docente'],
     excerpt: 'Tutorial para docentes sobre cómo registrar, modificar y publicar calificaciones de los estudiantes en el sistema académico.',
     detailedContent: `
       <h3 class="text-xl font-semibold text-primary mb-3">Objetivo del Tutorial</h3>
@@ -78,7 +85,7 @@ export const tutorialesData: Tutorial[] = [
     slug: 'seguimiento-progreso-padres',
     title: 'Cómo Realizar Seguimiento al Progreso Académico (Padres)',
     date: '2024-03-20',
-    targetAudience: ['Padres de Familia'],
+    targetAudience: ['padres-familia'],
     excerpt: 'Guía para padres sobre cómo acceder a la información de progreso de sus hijos y entender los reportes académicos.',
     detailedContent: `
       <h3 class="text-xl font-semibold text-primary mb-3">Importancia del Acompañamiento</h3>
@@ -104,7 +111,7 @@ export const tutorialesData: Tutorial[] = [
     slug: 'solicitud-constancias-online-video',
     title: 'Tutorial: Solicitud de Constancias en Línea (Video)',
     date: '2024-04-05',
-    targetAudience: ['Estudiantes Extensión a la Comunidad', 'General'],
+    targetAudience: ['extension-comunidad', 'general'],
     excerpt: 'Descubre cómo solicitar tus constancias de estudio de forma rápida y sencilla a través de nuestro nuevo portal.',
     detailedContent: `
       <h3 class="text-xl font-semibold text-primary mb-3">Facilitando Trámites</h3>
@@ -128,7 +135,7 @@ export const tutorialesData: Tutorial[] = [
     slug: 'uso-recursos-biblioteca-digital',
     title: 'Uso de Recursos de la Biblioteca Digital',
     date: '2024-07-10',
-    targetAudience: ['Estudiantes Extensión a la Comunidad', 'Docente', 'Estudiantes Pregrado (Plan BULL)'],
+    targetAudience: ['extension-comunidad', 'docente', 'plan-bull'],
     excerpt: 'Explora cómo acceder y utilizar los vastos recursos digitales que ofrece la biblioteca para el aprendizaje de idiomas.',
     detailedContent: `
       <h3 class="text-xl font-semibold text-primary mb-3">Potencia tu Aprendizaje</h3>
