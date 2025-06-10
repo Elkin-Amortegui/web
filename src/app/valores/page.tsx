@@ -19,7 +19,7 @@ export default function ValoresPage() {
         <div className="w-full max-w-3xl">
           <Card className="shadow-lg">
             <CardHeader>
-              <CardTitle className="text-2xl text-primary">Tarifas Actuales</CardTitle>
+              <CardTitle className="text-2xl text-primary">Valores Actuales</CardTitle>
               <CardDescription>Información sobre costos de cursos, exámenes y otros servicios.</CardDescription>
             </CardHeader>
             <CardContent>

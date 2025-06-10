@@ -74,13 +74,18 @@ export default function HomePage() {
 
     setFeaturedItems(combined);
     
-    const featuredTimer = setInterval(() => {
-      setCurrentFeaturedIndex((prevIndex) => (prevIndex + 1) % combined.length);
-    }, 5000);
+    let featuredTimerId: NodeJS.Timeout | undefined;
+    if (combined.length > 0) {
+      featuredTimerId = setInterval(() => {
+        setCurrentFeaturedIndex((prevIndex) => (prevIndex + 1) % combined.length);
+      }, 5000);
+    }
 
     return () => {
       clearInterval(heroTimer);
-      clearInterval(featuredTimer);
+      if (featuredTimerId) {
+        clearInterval(featuredTimerId);
+      }
     };
   }, []);
 
@@ -93,10 +98,12 @@ export default function HomePage() {
   };
 
   const goToFeaturedPrevious = () => {
+    if (featuredItems.length === 0) return;
     setCurrentFeaturedIndex((prevIndex) => (prevIndex - 1 + featuredItems.length) % featuredItems.length);
   };
 
   const goToFeaturedNext = () => {
+    if (featuredItems.length === 0) return;
     setCurrentFeaturedIndex((prevIndex) => (prevIndex + 1) % featuredItems.length);
   };
 
