@@ -1,16 +1,16 @@
 
-import type { TargetAudience } from '@/app/tutoriales/TutorialData';
+import type { TargetAudience } from '@/app/tutoriales/TutorialData'; // Using the updated type
 
 export interface Guide {
   id: string;
   slug: string;
   title: string;
   date: string;
-  targetAudience: TargetAudience[]; // Puede pertenecer a múltiples audiencias
+  targetAudience: TargetAudience[]; 
   excerpt: string;
   image: string; 
   aiHint: string;
-  detailedContent: string; // HTML para el contenido de la guía
+  detailedContent: string; 
 }
 
 export const guiasData: Guide[] = [
@@ -19,7 +19,7 @@ export const guiasData: Guide[] = [
     slug: 'inscripcion-cursos-extension',
     title: 'Guía Completa: Inscripción a Cursos de Extensión',
     date: '2024-05-15',
-    targetAudience: ['Extensión a la comunidad', 'General'],
+    targetAudience: ['Estudiantes y Comunidad', 'General'],
     excerpt: 'Pasos detallados para inscribirte en nuestros cursos de extensión, desde la selección hasta el pago.',
     image: 'https://placehold.co/600x800/3498db/ffffff?text=Guía+Inscripción',
     aiHint: 'registration form guide',

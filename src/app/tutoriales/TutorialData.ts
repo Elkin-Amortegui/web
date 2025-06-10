@@ -1,23 +1,22 @@
 
 export type TargetAudience =
-  | 'Estudiantes'
-  | 'Extensión a la comunidad'
+  | 'Estudiantes y Comunidad' // Fusionado y renombrado
   | 'Padres de Familia'
   | 'Docente'
   | 'Estudiantes Pregrado (Plan BULL)'
-  | 'General';
+  | 'General'; // Se mantiene por si hay contenido que no encaja en los 4 principales
 
 export interface Tutorial {
   id: string;
   slug: string;
   title: string;
   date: string;
-  targetAudience: TargetAudience[]; // Puede pertenecer a múltiples audiencias
+  targetAudience: TargetAudience[];
   excerpt: string;
-  detailedContent: string; // HTML para el contenido del tutorial
+  detailedContent: string; 
   youtubeVideoId: string;
-  image?: string; // Miniatura opcional para la tarjeta
-  aiHint?: string; // Para la miniatura
+  image?: string; 
+  aiHint?: string; 
 }
 
 export const tutorialesData: Tutorial[] = [
@@ -26,7 +25,7 @@ export const tutorialesData: Tutorial[] = [
     slug: 'acceso-moodle-estudiantes',
     title: 'Guía de Acceso a Moodle para Estudiantes',
     date: '2024-03-10',
-    targetAudience: ['Estudiantes', 'Estudiantes Pregrado (Plan BULL)'],
+    targetAudience: ['Estudiantes y Comunidad', 'Estudiantes Pregrado (Plan BULL)'],
     excerpt: 'Aprende cómo ingresar a la plataforma Moodle, encontrar tus cursos y navegar por los recursos disponibles.',
     detailedContent: `
       <h3 class="text-xl font-semibold text-primary mb-3">Introducción</h3>
@@ -46,7 +45,7 @@ export const tutorialesData: Tutorial[] = [
         <li><a href="/contacto" class="text-secondary hover:underline">Contacto Soporte Técnico</a></li>
       </ul>
     `,
-    youtubeVideoId: 'dQw4w9WgXcQ', // Placeholder
+    youtubeVideoId: 'dQw4w9WgXcQ', 
     image: 'https://placehold.co/400x250/00723F/FFFFFF?text=Moodle+Tutorial',
     aiHint: 'e-learning platform',
   },
@@ -70,7 +69,7 @@ export const tutorialesData: Tutorial[] = [
       </ol>
       <p class="mt-4">Mantener la información académica al día es crucial para el seguimiento del progreso estudiantil.</p>
     `,
-    youtubeVideoId: 'L_LUpnjgPso', // Placeholder
+    youtubeVideoId: 'L_LUpnjgPso', 
     image: 'https://placehold.co/400x250/FFD100/333333?text=Calificaciones',
     aiHint: 'teacher grading system',
   },
@@ -96,7 +95,7 @@ export const tutorialesData: Tutorial[] = [
         <li><a href="/contacto" class="text-secondary hover:underline">Preguntas Frecuentes para Padres</a></li>
       </ul>
     `,
-    youtubeVideoId: 'QH2-TGUlwu4', // Placeholder
+    youtubeVideoId: 'QH2-TGUlwu4', 
     image: 'https://placehold.co/400x250/005DAA/FFFFFF?text=Progreso+Padres',
     aiHint: 'parent student progress',
   },
@@ -105,7 +104,7 @@ export const tutorialesData: Tutorial[] = [
     slug: 'solicitud-constancias-online-video',
     title: 'Tutorial: Solicitud de Constancias en Línea (Video)',
     date: '2024-04-05',
-    targetAudience: ['Estudiantes', 'Extensión a la comunidad', 'General'],
+    targetAudience: ['Estudiantes y Comunidad', 'General'],
     excerpt: 'Descubre cómo solicitar tus constancias de estudio de forma rápida y sencilla a través de nuestro nuevo portal.',
     detailedContent: `
       <h3 class="text-xl font-semibold text-primary mb-3">Facilitando Trámites</h3>
@@ -120,7 +119,7 @@ export const tutorialesData: Tutorial[] = [
         <li>Recibe la confirmación y el documento digital o las instrucciones para recogerlo.</li>
       </ol>
     `,
-    youtubeVideoId: 'YddwkMJG1Jo', // Placeholder
+    youtubeVideoId: 'YddwkMJG1Jo', 
     image: 'https://placehold.co/400x250/4CAF50/FFFFFF?text=Constancias+Online',
     aiHint: 'online certificate request',
   },
@@ -129,7 +128,7 @@ export const tutorialesData: Tutorial[] = [
     slug: 'uso-recursos-biblioteca-digital',
     title: 'Uso de Recursos de la Biblioteca Digital',
     date: '2024-07-10',
-    targetAudience: ['Estudiantes', 'Docente', 'Estudiantes Pregrado (Plan BULL)'],
+    targetAudience: ['Estudiantes y Comunidad', 'Docente', 'Estudiantes Pregrado (Plan BULL)'],
     excerpt: 'Explora cómo acceder y utilizar los vastos recursos digitales que ofrece la biblioteca para el aprendizaje de idiomas.',
     detailedContent: `
       <h3 class="text-xl font-semibold text-primary mb-3">Potencia tu Aprendizaje</h3>
@@ -142,7 +141,7 @@ export const tutorialesData: Tutorial[] = [
       </ul>
       <p>¡Aprovecha al máximo estos recursos para complementar tus estudios!</p>
     `,
-    youtubeVideoId: 'oHg5SJYRHA0', // Placeholder (another Rick Astley)
+    youtubeVideoId: 'oHg5SJYRHA0', 
     image: 'https://placehold.co/400x250/E91E63/FFFFFF?text=Biblioteca+Digital',
     aiHint: 'digital library access',
   }

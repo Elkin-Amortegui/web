@@ -7,15 +7,14 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { BookOpen, Film, User, Users, GraduationCap, Briefcase, ShieldQuestion } from 'lucide-react'; // Combined icons
+import { BookOpen, Film, Users, ShieldQuestion, Briefcase, GraduationCap, Landmark } from 'lucide-react'; // Added Landmark
 import { tutorialesData, type Tutorial, type TargetAudience } from './TutorialData';
-import { guiasData, type Guide } from '@/app/guias/GuideData'; // Import guides
+import { guiasData, type Guide } from '@/app/guias/GuideData'; 
 import { format, parseISO } from 'date-fns';
 import { es } from 'date-fns/locale';
 
 const audienceFilters: { label: string; value: TargetAudience; icon: React.ElementType }[] = [
-  { label: 'Estudiantes', value: 'Estudiantes', icon: User },
-  { label: 'Extensión Com.', value: 'Extensión a la comunidad', icon: Users },
+  { label: 'Estudiantes y Comunidad', value: 'Estudiantes y Comunidad', icon: Users },
   { label: 'Padres de Familia', value: 'Padres de Familia', icon: ShieldQuestion },
   { label: 'Docentes', value: 'Docente', icon: Briefcase },
   { label: 'Plan BULL', value: 'Estudiantes Pregrado (Plan BULL)', icon: GraduationCap },
@@ -28,7 +27,7 @@ export default function TutorialesGuiasPage() {
   const [selectedContentType, setSelectedContentType] = useState<ContentType>('tutoriales');
 
   const filteredTutorials = useMemo(() => {
-    if (!selectedAudience) return []; // Or show all if no audience selected? For now, require selection.
+    if (!selectedAudience) return []; 
     return tutorialesData.filter(tutorial => tutorial.targetAudience.includes(selectedAudience!));
   }, [selectedAudience]);
 
@@ -49,7 +48,7 @@ export default function TutorialesGuiasPage() {
     <div className="container mx-auto px-4 md:px-6 py-12 md:py-16">
       <header className="text-center mb-12 md:mb-16">
         <div className="flex justify-center items-center gap-3 mb-4">
-            <BookOpen className="h-16 w-16 text-primary" />
+            <Landmark className="h-16 w-16 text-primary" /> {/* Changed Icon */}
         </div>
         <h1 className="font-headline text-4xl md:text-5xl font-bold text-primary mb-4">
           Tutoriales y Guías
@@ -59,23 +58,22 @@ export default function TutorialesGuiasPage() {
         </p>
       </header>
 
-      {/* Audience Filter Buttons */}
       <section className="mb-10">
         <h2 className="font-headline text-2xl font-bold text-primary mb-6 text-center">Selecciona tu Perfil</h2>
-        <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
           {audienceFilters.map((filter) => (
             <Button
               key={filter.value}
               variant={selectedAudience === filter.value ? 'default' : 'outline'}
               size="lg"
-              className={`min-w-[160px] h-14 text-base transition-all duration-200 ease-in-out transform hover:scale-105 ${selectedAudience === filter.value ? 'bg-primary text-primary-foreground shadow-lg' : 'border-primary/50 hover:bg-primary/10'}`}
+              className={`w-full h-16 text-base transition-all duration-200 ease-in-out transform hover:scale-105 flex flex-col items-center justify-center p-2 ${selectedAudience === filter.value ? 'bg-primary text-primary-foreground shadow-lg' : 'border-primary/50 hover:bg-primary/10'}`}
               onClick={() => {
                 setSelectedAudience(filter.value);
-                setSelectedContentType('tutoriales'); // Default to tutorials when audience changes
+                setSelectedContentType('tutoriales'); 
               }}
             >
-              <filter.icon className="mr-2 h-5 w-5" />
-              {filter.label}
+              <filter.icon className="mb-1 h-6 w-6" />
+              <span className="text-center text-sm">{filter.label}</span>
             </Button>
           ))}
         </div>

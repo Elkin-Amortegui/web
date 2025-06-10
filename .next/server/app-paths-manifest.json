@@ -1,5 +1,7 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
+  "/guias/[slug]/page": "app/guias/[slug]/page.js",
+  "/oferta-academica/page": "app/oferta-academica/page.js",
   "/page": "app/page.js",
   "/tutoriales/page": "app/tutoriales/page.js"
 }

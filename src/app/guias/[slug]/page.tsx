@@ -2,10 +2,10 @@
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, CalendarDays, Users, BookOpen } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { guiasData, Guide } from '../GuideData';
 import { format, parseISO } from 'date-fns';
 import { es } from 'date-fns/locale';
+import ImageLightbox from '@/components/ImageLightbox'; // Import the new component
 
 async function getGuideData(slug: string): Promise<Guide | null> {
   const guide = guiasData.find((g) => g.slug === slug);
@@ -65,25 +65,22 @@ export default async function GuideDetailPage({ params }: { params: { slug: stri
         
         <div className="grid md:grid-cols-[300px_1fr] lg:grid-cols-[350px_1fr] gap-8 items-start">
           <aside className="w-full md:sticky md:top-20">
-            <Image 
-              src={guide.image} 
-              alt={guide.title} 
-              width={350} 
-              height={495} // Assuming aspect ratio for 8.5x11 or similar guide image
-              className="w-full h-auto rounded-lg mb-6 shadow-md object-contain border"
-              data-ai-hint={guide.aiHint}
-              priority
-            />
+            {guide.image && (
+              <ImageLightbox 
+                src={guide.image} 
+                alt={guide.title} 
+                aiHint={guide.aiHint}
+                triggerClassName="w-full h-auto rounded-lg mb-6 shadow-md" // Pass width/height if needed, or aspect ratio
+              />
+            )}
           </aside>
           
-          <main>
+          <main className="prose prose-lg dark:prose-invert max-w-none text-foreground/90">
+            <h2 className="text-2xl font-semibold text-primary mb-4 flex items-center">
+              <BookOpen className="mr-2 h-6 w-6" /> Contenido de la Guía
+            </h2>
             {guide.detailedContent && (
-              <div className="prose prose-lg dark:prose-invert max-w-none text-foreground/90">
-                <h2 className="text-2xl font-semibold text-primary mb-4 flex items-center">
-                  <BookOpen className="mr-2 h-6 w-6" /> Contenido de la Guía
-                </h2>
-                <div dangerouslySetInnerHTML={{ __html: guide.detailedContent }} />
-              </div>
+              <div dangerouslySetInnerHTML={{ __html: guide.detailedContent }} />
             )}
           </main>
         </div>
