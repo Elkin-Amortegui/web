@@ -236,45 +236,64 @@ export default function Header() {
       </div>
 
       {/* Main Navigation Bar */}
-      <div className="container mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-4 md:px-6">
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Link href="/" className="flex items-center gap-2" aria-label="Página de inicio del Centro de Idiomas UNILLANOS">
-              <Image 
-                src="/images/logos/logo-centro-idiomas-unillanos-color.png" 
-                alt="Logo Centro de Idiomas UNILLANOS" 
-                width={150} 
-                height={40} 
-                className="h-auto" 
-                data-ai-hint="university language center logo"
-                priority
-              />
-            </Link>
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>Ir a la página de Inicio</p>
-          </TooltipContent>
-        </Tooltip>
+      <div className="container mx-auto flex h-24 max-w-screen-2xl items-center justify-between px-4 md:px-6">
+        <div className="flex items-center h-full">
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link href="https://www.unillanos.edu.co/index.php" target="_blank" rel="noopener noreferrer" aria-label="Página principal de Unillanos" className="flex items-center h-full">
+                <Image
+                  src="/images/logos/logo-universidad.png" 
+                  alt="Logo Unillanos"
+                  width={64} 
+                  height={64} 
+                  className="h-16 w-auto"  
+                  data-ai-hint="university emblem"
+                />
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent><p>Ir a Unillanos.edu.co</p></TooltipContent>
+          </Tooltip>
+          
+          <div className="h-16 w-px bg-primary mx-3"></div>
 
-        <div className="flex items-center gap-2">
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link href="/" className="flex items-center h-full" aria-label="Página de inicio del Centro de Idiomas UNILLANOS">
+                <Image 
+                  src="/images/logos/logo-centro-idiomas-unillanos-color.png" 
+                  alt="Logo Centro de Idiomas UNILLANOS" 
+                  width={213} 
+                  height={64} 
+                  className="h-16 w-auto" 
+                  data-ai-hint="university language center logo"
+                  priority
+                />
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent><p>Ir a la página de Inicio del Centro de Idiomas</p></TooltipContent>
+          </Tooltip>
+        </div>
+
+
+        <div className="flex items-center gap-2 h-full">
           {/* Desktop Navigation */}
-          <NavigationMenu className="hidden md:flex">
-            <NavigationMenuList>
+          <NavigationMenu className="hidden md:flex h-full">
+            <NavigationMenuList className="space-x-4 h-full"> 
               {mainNavItems.map((item) => (
                 item.href ? (
-                  <NavigationMenuItem key={item.title}>
+                  <NavigationMenuItem key={item.title} className="h-full"> 
                     <Link href={item.href} legacyBehavior passHref>
                       <NavigationMenuLink
-                        className={cn(navigationMenuTriggerStyle(), "group data-[active]:bg-primary data-[active]:text-primary-foreground rounded-md text-sm", {'bg-primary text-primary-foreground': pathname === item.href})}
+                        className={cn(navigationMenuTriggerStyle(), "group data-[active]:bg-primary data-[active]:text-primary-foreground focus:bg-primary focus:text-primary-foreground text-sm", {'bg-primary text-primary-foreground': pathname === item.href})}
                       >
                         {item.title}
                       </NavigationMenuLink>
                     </Link>
                   </NavigationMenuItem>
                 ) : (
-                  <NavigationMenuItem key={item.title}>
+                  <NavigationMenuItem key={item.title} className="h-full"> 
                     <NavigationMenuTrigger
-                       className="group data-[state=open]:bg-primary data-[state=open]:text-primary-foreground rounded-md text-sm"
+                       className={cn(navigationMenuTriggerStyle(), "group data-[state=open]:bg-primary data-[state=open]:text-primary-foreground focus:bg-primary focus:text-primary-foreground text-sm")}
                     >
                       {item.title}
                     </NavigationMenuTrigger>
@@ -286,7 +305,7 @@ export default function Header() {
                             title={subItem.title}
                             href={subItem.href}
                             external={subItem.external}
-                            className={pathname === subItem.href ? 'bg-muted' : ''}
+                            className={cn(pathname === subItem.href ? 'bg-muted' : '', 'hover:bg-muted focus:bg-muted')}
                           >
                             {subItem.description}
                           </ListItem>
@@ -302,7 +321,7 @@ export default function Header() {
            <Tooltip>
             <TooltipTrigger asChild>
                <Link href="/inscripciones" legacyBehavior passHref>
-                <a className={cn(buttonVariants({ size: 'sm', className: 'bg-secondary hover:bg-secondary/90 text-secondary-foreground hidden md:inline-flex h-9' }))} aria-label="Inscripciones">
+                <a className={cn(buttonVariants({ size: 'default', className: 'bg-secondary hover:bg-secondary/90 text-secondary-foreground hidden md:inline-flex h-10 rounded-md px-6' }))} aria-label="Inscripciones">
                   Inscríbete
                 </a>
               </Link>
@@ -422,4 +441,3 @@ export default function Header() {
     </header>
   );
 }
-

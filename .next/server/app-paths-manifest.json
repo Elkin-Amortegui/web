@@ -1,24 +1,7 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
-  "/actividades/page": "app/actividades/page.js",
-  "/contacto/page": "app/contacto/page.js",
-  "/inscripciones/page": "app/inscripciones/page.js",
-  "/mapa-del-sitio/page": "app/mapa-del-sitio/page.js",
-  "/normativa/page": "app/normativa/page.js",
-  "/noticias/page": "app/noticias/page.js",
+  "/actividades/[slug]/page": "app/actividades/[slug]/page.js",
   "/oferta-academica/page": "app/oferta-academica/page.js",
   "/page": "app/page.js",
-  "/privacy-policy/page": "app/privacy-policy/page.js",
-  "/quienes-somos/page": "app/quienes-somos/page.js",
-  "/search-results/page": "app/search-results/page.js",
-  "/terms-conditions/page": "app/terms-conditions/page.js",
-  "/tramites/page": "app/tramites/page.js",
-  "/tutoriales/page": "app/tutoriales/page.js",
-  "/valores/page": "app/valores/page.js",
-  "/actividades/[slug]/page": "app/actividades/[slug]/page.js",
-  "/guias/[slug]/page": "app/guias/[slug]/page.js",
-  "/noticias/[slug]/page": "app/noticias/[slug]/page.js",
-  "/oferta-academica/[languageName]/page": "app/oferta-academica/[languageName]/page.js",
-  "/tramites/[slug]/page": "app/tramites/[slug]/page.js",
-  "/tutoriales/[slug]/page": "app/tutoriales/[slug]/page.js"
+  "/search-results/page": "app/search-results/page.js"
 }
