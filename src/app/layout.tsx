@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import FloatingButtons from '@/components/layout/FloatingButtons';
-import { TooltipProvider } from '@/components/ui/tooltip'; // Added
+import { TooltipProvider } from '@/components/ui/tooltip'; 
 
 export const metadata: Metadata = {
   title: 'Centro de Idiomas UNILLANOS',
@@ -26,9 +26,9 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased flex flex-col min-h-screen">
-        <TooltipProvider> {/* Added TooltipProvider wrapper */}
+        <TooltipProvider> 
           <Header />
-          <main className="flex-grow pt-16"> {/* pt-16 to offset sticky header height */}
+          <main className="flex-grow pt-24"> {/* Asegura que el padding superior sea igual a la altura del header */}
             {children}
           </main>
           <Footer />

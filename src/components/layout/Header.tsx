@@ -108,17 +108,31 @@ export default function Header() {
 
   const ListItem = React.forwardRef<
     React.ElementRef<"a">,
-    React.ComponentPropsWithoutRef<"a"> & { title: string; children?: React.ReactNode, external?: boolean }
-  >(({ className, title, children, href, external, ...props }, ref) => {
+    React.ComponentPropsWithoutRef<"a"> & { title: string; children?: React.ReactNode, external?: boolean, isActive?: boolean }
+  >(({ className, title, children, href, external, isActive, ...props }, ref) => {
     const linkContent = (
       <>
         <div className="text-sm font-medium leading-none">{title}</div>
-        {children && <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-          {children}
-        </p>}
+        {children && (
+            <p className={cn("line-clamp-2 text-xs leading-snug mt-0.5", isActive ? "text-primary-foreground/80" : "text-muted-foreground/90 group-hover:text-primary-foreground/80 group-focus:text-primary-foreground/80")}>
+                {children}
+            </p>
+        )}
+        {external && <ExternalLink className={cn("inline-block ml-1 h-3 w-3", isActive ? "text-primary-foreground/90" : "text-muted-foreground group-hover:text-primary-foreground group-focus:text-primary-foreground")} />}
       </>
     );
-
+  
+    const commonLinkClasses = cn(
+      "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors group",
+      isActive ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
+      className
+    );
+    
+    const linkProps = {
+      ...props,
+      'data-active': isActive ? 'true' : undefined
+    };
+  
     if (external) {
       return (
         <li>
@@ -128,30 +142,24 @@ export default function Header() {
               ref={ref}
               target="_blank"
               rel="noopener noreferrer"
-              className={cn(
-                "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-muted focus:bg-muted",
-                className
-              )}
-              {...props}
+              className={commonLinkClasses}
+              {...linkProps}
             >
-              {linkContent} <ExternalLink className="inline-block ml-1 h-3 w-3" />
+              {linkContent}
             </a>
           </NavigationMenuLink>
         </li>
       );
     }
-
+  
     return (
       <li>
         <NavigationMenuLink asChild>
           <Link
             href={href || '#'}
             ref={ref}
-            className={cn(
-              "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-muted focus:bg-muted",
-              className
-            )}
-            {...props}
+            className={commonLinkClasses}
+            {...linkProps}
           >
             {linkContent}
           </Link>
@@ -284,7 +292,7 @@ export default function Header() {
                   <NavigationMenuItem key={item.title} className="h-full"> 
                     <Link href={item.href} legacyBehavior passHref>
                       <NavigationMenuLink
-                        className={cn(navigationMenuTriggerStyle(), "group data-[active]:bg-primary data-[active]:text-primary-foreground focus:bg-primary focus:text-primary-foreground text-sm", {'bg-primary text-primary-foreground': pathname === item.href})}
+                        className={cn(navigationMenuTriggerStyle(), "group rounded-none data-[active]:bg-primary data-[active]:text-primary-foreground focus:bg-primary focus:text-primary-foreground text-sm", {'bg-primary text-primary-foreground': pathname === item.href})}
                       >
                         {item.title}
                       </NavigationMenuLink>
@@ -293,19 +301,19 @@ export default function Header() {
                 ) : (
                   <NavigationMenuItem key={item.title} className="h-full"> 
                     <NavigationMenuTrigger
-                       className={cn(navigationMenuTriggerStyle(), "group data-[state=open]:bg-primary data-[state=open]:text-primary-foreground focus:bg-primary focus:text-primary-foreground text-sm")}
+                       className={cn(navigationMenuTriggerStyle(), "group rounded-none data-[state=open]:bg-primary data-[state=open]:text-primary-foreground focus:bg-primary focus:text-primary-foreground text-sm")}
                     >
                       {item.title}
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
-                      <ul className="grid gap-3 p-4 md:w-[450px] lg:w-[550px] lg:grid-cols-[.75fr_1fr]">
+                      <ul className="flex flex-col w-[280px] p-2 space-y-1"> {/* Adjusted width, padding, and added space-y */}
                         {item.items?.map((subItem) => (
                           <ListItem
                             key={subItem.title}
                             title={subItem.title}
                             href={subItem.href}
                             external={subItem.external}
-                            className={cn(pathname === subItem.href ? 'bg-muted' : '', 'hover:bg-muted focus:bg-muted')}
+                            isActive={pathname === subItem.href}
                           >
                             {subItem.description}
                           </ListItem>
