@@ -242,7 +242,7 @@ export default function Header() {
           <TooltipTrigger asChild>
             <Link href="/" className="flex items-center gap-2" aria-label="Página de inicio del Centro de Idiomas UNILLANOS">
               <Image 
-                src="/images/logo-idiomas-unillanos-color.png" 
+                src="/images/logos/logo-centro-idiomas-unillanos-color.png" 
                 alt="Logo Centro de Idiomas UNILLANOS" 
                 width={150} // Adjusted width for the logo image
                 height={40} // Adjusted height
