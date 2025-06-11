@@ -67,7 +67,7 @@ const mainNavItems: NavItem[] = [
     ],
   },
   {
-    title: 'Nosotros', // Renamed from "El Centro"
+    title: 'Nosotros', 
     items: [
       { title: 'Quiénes Somos', href: '/quienes-somos', description: 'Nuestra historia y misión.' },
     ],
@@ -81,14 +81,13 @@ const topBarSocials = [
 ];
 
 const yoSoyItems: { label: string; audienceSlug: TargetAudienceSlug }[] = Object.entries(audienceSlugMap)
-  .filter(([slug]) => slug !== 'general') // Exclude 'general' if not needed in "Yo Soy"
+  .filter(([slug]) => slug !== 'general') 
   .map(([slug, label]) => ({ label, audienceSlug: slug as TargetAudienceSlug }));
 
 const editorialLinks: NavItem[] = [
   { title: 'Plataforma Pearson', href: 'https://www.pearson.com/', external: true, description: 'Recursos y libros de Pearson.' },
   { title: 'Plataforma Oxford', href: 'https://elt.oup.com/', external: true, description: 'Materiales de Oxford University Press.' },
   { title: 'Plataforma Cambridge', href: 'https://www.cambridgeone.org/', external: true, description: 'Herramientas de Cambridge University Press.' },
-  // Add more editorial links as needed
 ];
 
 
@@ -130,7 +129,7 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
               className={cn(
-                "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-muted focus:bg-muted",
                 className
               )}
               {...props}
@@ -149,7 +148,7 @@ export default function Header() {
             href={href || '#'}
             ref={ref}
             className={cn(
-              "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+              "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-muted focus:bg-muted",
               className
             )}
             {...props}
@@ -163,7 +162,7 @@ export default function Header() {
   ListItem.displayName = "ListItem"
 
   return (
-    <header className="fixed top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="fixed top-0 z-50 w-full border-b border-border/40 bg-background shadow-sm">
       {/* Top Bar */}
       <div className="bg-accent text-accent-foreground">
         <div className="container mx-auto flex h-10 max-w-screen-2xl items-center justify-between px-4 md:px-6 text-xs">
@@ -194,7 +193,7 @@ export default function Header() {
               <DropdownMenuContent align="end" className="bg-accent border-primary/50">
                 {yoSoyItems.map(item => (
                   <DropdownMenuItem key={item.audienceSlug} asChild className="cursor-pointer hover:!bg-primary/30 focus:!bg-primary/30">
-                    <Link href={`/tutoriales?audience=${item.audienceSlug}`} className="text-accent-foreground"> {/* Ensure white text */}
+                    <Link href={`/tutoriales?audience=${item.audienceSlug}`} className="text-accent-foreground"> 
                       {item.label}
                     </Link>
                   </DropdownMenuItem>
@@ -216,7 +215,7 @@ export default function Header() {
               <DropdownMenuContent align="end" className="bg-accent border-primary/50">
                 {editorialLinks.map(link => (
                   <DropdownMenuItem key={link.title} asChild className="cursor-pointer hover:!bg-primary/30 focus:!bg-primary/30">
-                    <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-accent-foreground"> {/* Ensure white text */}
+                    <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-accent-foreground"> 
                       {link.title} <ExternalLink className="inline-block ml-1 h-3 w-3" />
                     </a>
                   </DropdownMenuItem>
@@ -244,9 +243,9 @@ export default function Header() {
               <Image 
                 src="/images/logos/logo-centro-idiomas-unillanos-color.png" 
                 alt="Logo Centro de Idiomas UNILLANOS" 
-                width={150} // Adjusted width for the logo image
-                height={40} // Adjusted height
-                className="h-auto" // Maintain aspect ratio
+                width={150} 
+                height={40} 
+                className="h-auto" 
                 data-ai-hint="university language center logo"
                 priority
               />
@@ -266,7 +265,7 @@ export default function Header() {
                   <NavigationMenuItem key={item.title}>
                     <Link href={item.href} legacyBehavior passHref>
                       <NavigationMenuLink
-                        className={cn(navigationMenuTriggerStyle(), "group hover:bg-primary hover:text-primary-foreground data-[active]:bg-primary/10 data-[state=open]:bg-primary/10 transition-all duration-200 ease-in-out transform hover:scale-105 rounded-md text-sm", {'bg-primary/10 text-primary': pathname === item.href})}
+                        className={cn(navigationMenuTriggerStyle(), "group data-[active]:bg-primary data-[active]:text-primary-foreground rounded-md text-sm", {'bg-primary text-primary-foreground': pathname === item.href})}
                       >
                         {item.title}
                       </NavigationMenuLink>
@@ -275,12 +274,12 @@ export default function Header() {
                 ) : (
                   <NavigationMenuItem key={item.title}>
                     <NavigationMenuTrigger
-                       className="group hover:bg-primary hover:text-primary-foreground data-[state=open]:bg-primary/10 transition-all duration-200 ease-in-out transform hover:scale-105 rounded-md text-sm"
+                       className="group data-[state=open]:bg-primary data-[state=open]:text-primary-foreground rounded-md text-sm"
                     >
                       {item.title}
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
-                      <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                      <ul className="grid gap-3 p-4 md:w-[450px] lg:w-[550px] lg:grid-cols-[.75fr_1fr]">
                         {item.items?.map((subItem) => (
                           <ListItem
                             key={subItem.title}
