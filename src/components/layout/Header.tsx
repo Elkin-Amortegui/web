@@ -334,9 +334,9 @@ export default function Header() {
                    <SheetTitle className="sr-only">Menú Principal</SheetTitle>
                    <SheetClose asChild>
                     <Link href="/" className="flex items-center gap-2" aria-label="Centro de Idiomas UNILLANOS Home">
-                       <Image src="/images/logo-idiomas-unillanos-color.png" alt="Logo Centro de Idiomas UNILLANOS" width={40} height={40} data-ai-hint="university language center logo mobile"/>
+                       <Image src="/images/logos/logo-centro-idiomas-unillanos-color.png" alt="Logo Centro de Idiomas UNILLANOS" width={40} height={40} data-ai-hint="university language center logo mobile"/>
                        <div>
-                        <span className="font-headline text-md font-semibold text-primary">Centro de Idiomas</span>
+                        <span className="font-headline text-md font-semibold text-primary">Centro de Idiomas</span> 
                         <span className="block text-xs text-primary/80">UNILLANOS</span>
                        </div>
                     </Link>
