@@ -1,6 +1,6 @@
 
 import Link from 'next/link';
-import { MapIcon, Home, BookOpen, Users, CalendarDays, Newspaper, ClipboardList, Info, DollarSign, FileText, Phone, Edit3, ShieldCheck } from 'lucide-react';
+import { MapIcon, Home, BookOpen, Users, CalendarDays, Newspaper, ClipboardList, Info, DollarSign, FileText, Phone, Edit3, ShieldCheck, Navigation } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const siteSections = [
@@ -47,6 +47,7 @@ const siteSections = [
       { label: 'Tutoriales y Guías', href: '/tutoriales' },
       { label: 'Inscripciones', href: '/inscripciones' },
       { label: 'Contacto', href: '/contacto' },
+      { label: 'Cómo llegar', href: '/como-llegar' },
     ],
   },
    {

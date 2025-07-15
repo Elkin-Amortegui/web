@@ -24,7 +24,10 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Menu, Search, X, Facebook, Youtube, MessageCircle, ChevronDown, UserCircle, ExternalLink, LibraryBig } from 'lucide-react';
+import { 
+  Menu, Search, X, Facebook, Youtube, MessageCircle, ChevronDown, UserCircle, ExternalLink, LibraryBig,
+  BookOpenCheck, DollarSign, CalendarHeart, Newspaper, ClipboardList, Gavel, Users, Mail, MapPin
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import Image from 'next/image';
@@ -39,6 +42,7 @@ interface NavItem {
   isButton?: boolean;
   external?: boolean;
   items?: NavItem[];
+  icon?: React.ElementType;
 }
 
 const mainNavItems: NavItem[] = [
@@ -46,30 +50,31 @@ const mainNavItems: NavItem[] = [
   {
     title: 'Académico',
     items: [
-      { title: 'Oferta Académica', href: '/oferta-academica', description: 'Cursos de idiomas disponibles.' },
-      { title: 'Valores y Tarifas', href: '/valores', description: 'Consulta costos de programas.' },
+      { title: 'Oferta Académica', href: '/oferta-academica', description: 'Cursos de idiomas disponibles.', icon: BookOpenCheck },
+      { title: 'Valores y Tarifas', href: '/valores', description: 'Consulta costos de programas.', icon: DollarSign },
     ],
   },
   {
     title: 'Comunidad',
     items: [
-      { title: 'Actividades y Eventos', href: '/actividades', description: 'Participa en nuestros eventos.' },
-      { title: 'Noticias', href: '/noticias', description: 'Mantente informado.' },
+      { title: 'Actividades y Eventos', href: '/actividades', description: 'Participa en nuestros eventos.', icon: CalendarHeart },
+      { title: 'Noticias', href: '/noticias', description: 'Mantente informado.', icon: Newspaper },
     ],
   },
   {
     title: 'Soporte',
     items: [
-      { title: 'Trámites', href: '/tramites', description: 'Procesos administrativos.' },
-      { title: 'Tutoriales y Guías', href: '/tutoriales', description: 'Ayuda y recursos.' },
+      { title: 'Trámites', href: '/tramites', description: 'Procesos administrativos.', icon: ClipboardList },
+      { title: 'Tutoriales y Guías', href: '/tutoriales', description: 'Ayuda y recursos.', icon: Youtube },
     ],
   },
   {
     title: 'Nosotros', 
     items: [
-      { title: 'Quiénes Somos', href: '/quienes-somos', description: 'Nuestra historia y misión.' },
-      { title: 'Contacto', href: '/contacto', description: 'Comunícate con nosotros.' },
-      { title: 'Normativa', href: '/normativa', description: 'Reglamentos y políticas.' },
+      { title: 'Quiénes Somos', href: '/quienes-somos', description: 'Nuestra historia y misión.', icon: Users },
+      { title: 'Contacto', href: '/contacto', description: 'Comunícate con nosotros.', icon: Mail },
+      { title: 'Normativa', href: '/normativa', description: 'Reglamentos y políticas.', icon: Gavel },
+      { title: 'Cómo llegar', href: '/como-llegar', description: 'Encuentra nuestra ubicación.', icon: MapPin },
     ],
   },
 ];
@@ -85,9 +90,10 @@ const yoSoyItems: { label: string; audienceSlug: TargetAudienceSlug }[] = Object
   .map(([slug, label]) => ({ label, audienceSlug: slug as TargetAudienceSlug }));
 
 const editorialLinks: NavItem[] = [
-  { title: 'Plataforma Pearson', href: 'https://www.pearson.com/', external: true, description: 'Recursos y libros de Pearson.' },
-  { title: 'Plataforma Oxford', href: 'https://elt.oup.com/', external: true, description: 'Materiales de Oxford University Press.' },
-  { title: 'Plataforma Cambridge', href: 'https://www.cambridgeone.org/', external: true, description: 'Herramientas de Cambridge University Press.' },
+  { title: 'Plataforma Pearson', href: 'https://english-dashboard.pearson.com/ies-session', external: true, description: 'Accede a tu plataforma de aprendizaje Pearson.' },
+  { title: 'Plataforma BlinkLearning', href: 'https://www.blinklearning.com/v/1752137517/themes/tmpux/launch.php#content/mybooks', external: true, description: 'Entra a tus libros digitales en BlinkLearning.' },
+  { title: 'National Geographic Learning', href: 'https://learn.eltngl.com/', external: true, description: 'Plataforma de recursos de National Geographic Learning.' },
+  { title: 'Britannica Education', href: 'https://hellobritannica.eb.com/dashboard/my-classes', external: true, description: 'Plataforma de recursos educativos de Britannica.' },
 ];
 
 
@@ -108,22 +114,25 @@ export default function Header() {
 
   const ListItem = React.forwardRef<
     React.ElementRef<"a">,
-    React.ComponentPropsWithoutRef<"a"> & { title: string; children?: React.ReactNode, external?: boolean, isActive?: boolean }
-  >(({ className, title, children, href, external, isActive, ...props }, ref) => {
+    React.ComponentPropsWithoutRef<"a"> & { title: string; children?: React.ReactNode, external?: boolean, isActive?: boolean, icon?: React.ElementType }
+  >(({ className, title, children, href, external, isActive, icon: Icon, ...props }, ref) => {
     const linkContent = (
-      <>
-        <div className="text-sm font-medium leading-none">{title}</div>
-        {children && (
-            <p className={cn("line-clamp-2 text-xs leading-snug mt-0.5", isActive ? "text-primary-foreground/80" : "text-muted-foreground/90 group-hover:text-primary-foreground/80 group-focus:text-primary-foreground/80")}>
-                {children}
-            </p>
-        )}
-        {external && <ExternalLink className={cn("inline-block ml-1 h-3 w-3", isActive ? "text-primary-foreground/90" : "text-muted-foreground group-hover:text-primary-foreground group-focus:text-primary-foreground")} />}
-      </>
+      <div className="flex items-start gap-3">
+        {Icon && <Icon className={cn("h-6 w-6 shrink-0 mt-1", isActive ? "text-primary-foreground" : "text-primary")} />}
+        <div className="flex-grow">
+          <div className="text-sm font-medium leading-none">{title}</div>
+          {children && (
+              <p className={cn("line-clamp-2 text-xs leading-snug mt-0.5", isActive ? "text-primary-foreground/80" : "text-muted-foreground/90 group-hover:text-primary-foreground/80 group-focus:text-primary-foreground/80")}>
+                  {children}
+              </p>
+          )}
+          {external && <ExternalLink className={cn("inline-block ml-1 h-3 w-3", isActive ? "text-primary-foreground/90" : "text-muted-foreground group-hover:text-primary-foreground group-focus:text-primary-foreground")} />}
+        </div>
+      </div>
     );
   
     const commonLinkClasses = cn(
-      "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors group",
+      "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors group w-full h-full",
       isActive ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
       className
     );
@@ -283,30 +292,28 @@ export default function Header() {
         </div>
 
 
-        <div className="flex items-center gap-2 h-full">
+        <div className="flex items-center gap-2">
           {/* Desktop Navigation */}
-          <NavigationMenu className="hidden md:flex h-full">
-            <NavigationMenuList className="space-x-4 h-full"> 
+          <NavigationMenu className="hidden md:flex">
+            <NavigationMenuList> 
               {mainNavItems.map((item) => (
                 item.href ? (
-                  <NavigationMenuItem key={item.title} className="h-full"> 
+                  <NavigationMenuItem key={item.title}> 
                     <Link href={item.href} legacyBehavior passHref>
                       <NavigationMenuLink
-                        className={cn(navigationMenuTriggerStyle(), "group focus:bg-primary focus:text-primary-foreground data-[active]:bg-primary data-[active]:text-primary-foreground data-[state=open]:bg-primary data-[state=open]:text-primary-foreground text-sm", {'bg-primary text-primary-foreground': pathname === item.href})}
+                        className={cn(navigationMenuTriggerStyle(), 'rounded-md')}
                       >
                         {item.title}
                       </NavigationMenuLink>
                     </Link>
                   </NavigationMenuItem>
                 ) : (
-                  <NavigationMenuItem key={item.title} className="h-full"> 
-                    <NavigationMenuTrigger
-                       className={cn(navigationMenuTriggerStyle(), "group focus:bg-primary focus:text-primary-foreground data-[active]:bg-primary data-[active]:text-primary-foreground data-[state=open]:bg-primary data-[state=open]:text-primary-foreground text-sm")}
-                    >
+                  <NavigationMenuItem key={item.title}> 
+                    <NavigationMenuTrigger className='rounded-md'>
                       {item.title}
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
-                      <ul className="grid grid-cols-2 gap-x-4 gap-y-2 p-3 w-[480px]">
+                       <ul className="bg-popover text-popover-foreground border rounded-lg shadow-lg grid grid-cols-2 gap-3 p-4 min-w-[500px]">
                         {item.items?.map((subItem) => (
                           <ListItem
                             key={subItem.title}
@@ -314,6 +321,7 @@ export default function Header() {
                             href={subItem.href}
                             external={subItem.external}
                             isActive={pathname === subItem.href}
+                            icon={subItem.icon}
                           >
                             {subItem.description}
                           </ListItem>
@@ -352,8 +360,7 @@ export default function Header() {
                   </SheetTrigger>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>Abrir menú de navegación</p>
-                </TooltipContent>
+                  <p>Abrir menú de navegación</p></TooltipContent>
               </Tooltip>
               <SheetContent side="right" className="w-[300px] sm:w-[340px] p-0 flex flex-col">
                 <SheetHeader className="p-4 border-b">

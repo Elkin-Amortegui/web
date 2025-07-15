@@ -83,8 +83,8 @@ const NavigationMenuContent = React.forwardRef<
   <NavigationMenuPrimitive.Content
     ref={ref}
     className={cn(
-      "data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-end]:slide-in-from-right-52 data-[motion^=from-start]:slide-in-from-left-52 data-[motion^=to-end]:slide-out-to-right-52 data-[motion^=to-start]:slide-out-to-left-52 md:absolute md:left-0 md:w-auto", // md:left-0 is key for aligning under trigger
-      "bg-background text-foreground border border-border rounded-md shadow-lg",
+      "data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-end]:slide-in-from-right-52 data-[motion^=from-start]:slide-in-from-left-52 data-[motion^=to-end]:slide-out-to-right-52 data-[motion^=to-start]:slide-out-to-left-52 md:absolute md:w-auto", // md:left-0 is key for aligning under trigger
+      "flex justify-center",
       className
     )}
     {...props}
@@ -98,10 +98,10 @@ const NavigationMenuViewport = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Viewport>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Viewport>
 >(({ className, ...props }, ref) => (
-  <div className={cn("absolute top-full left-0 flex w-full")}> {/* Ensure this div is full width and allows viewport to align */}
+  <div className={cn("absolute top-full left-0 flex w-full justify-center")}>
     <NavigationMenuPrimitive.Viewport
       className={cn(
-        "origin-top-center relative h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90",
+        "origin-top-center relative h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md bg-transparent text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90",
         className
       )}
       ref={ref}
