@@ -48,7 +48,6 @@ const mainNavItems: NavItem[] = [
     items: [
       { title: 'Oferta Académica', href: '/oferta-academica', description: 'Cursos de idiomas disponibles.' },
       { title: 'Valores y Tarifas', href: '/valores', description: 'Consulta costos de programas.' },
-      { title: 'Normativa', href: '/normativa', description: 'Reglamentos y políticas.' },
     ],
   },
   {
@@ -63,13 +62,14 @@ const mainNavItems: NavItem[] = [
     items: [
       { title: 'Trámites', href: '/tramites', description: 'Procesos administrativos.' },
       { title: 'Tutoriales y Guías', href: '/tutoriales', description: 'Ayuda y recursos.' },
-      { title: 'Contacto', href: '/contacto', description: 'Comunícate con nosotros.' },
     ],
   },
   {
     title: 'Nosotros', 
     items: [
       { title: 'Quiénes Somos', href: '/quienes-somos', description: 'Nuestra historia y misión.' },
+      { title: 'Contacto', href: '/contacto', description: 'Comunícate con nosotros.' },
+      { title: 'Normativa', href: '/normativa', description: 'Reglamentos y políticas.' },
     ],
   },
 ];
@@ -292,7 +292,7 @@ export default function Header() {
                   <NavigationMenuItem key={item.title} className="h-full"> 
                     <Link href={item.href} legacyBehavior passHref>
                       <NavigationMenuLink
-                        className={cn(navigationMenuTriggerStyle(), "group rounded-none data-[active]:bg-primary data-[active]:text-primary-foreground focus:bg-primary focus:text-primary-foreground text-sm", {'bg-primary text-primary-foreground': pathname === item.href})}
+                        className={cn(navigationMenuTriggerStyle(), "group focus:bg-primary focus:text-primary-foreground data-[active]:bg-primary data-[active]:text-primary-foreground data-[state=open]:bg-primary data-[state=open]:text-primary-foreground text-sm", {'bg-primary text-primary-foreground': pathname === item.href})}
                       >
                         {item.title}
                       </NavigationMenuLink>
@@ -301,12 +301,12 @@ export default function Header() {
                 ) : (
                   <NavigationMenuItem key={item.title} className="h-full"> 
                     <NavigationMenuTrigger
-                       className={cn(navigationMenuTriggerStyle(), "group rounded-none data-[state=open]:bg-primary data-[state=open]:text-primary-foreground focus:bg-primary focus:text-primary-foreground text-sm")}
+                       className={cn(navigationMenuTriggerStyle(), "group focus:bg-primary focus:text-primary-foreground data-[active]:bg-primary data-[active]:text-primary-foreground data-[state=open]:bg-primary data-[state=open]:text-primary-foreground text-sm")}
                     >
                       {item.title}
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
-                      <ul className="flex flex-col w-[280px] p-2 space-y-1"> {/* Adjusted width, padding, and added space-y */}
+                      <ul className="grid grid-cols-2 gap-x-4 gap-y-2 p-3 w-[480px]">
                         {item.items?.map((subItem) => (
                           <ListItem
                             key={subItem.title}
@@ -329,7 +329,7 @@ export default function Header() {
            <Tooltip>
             <TooltipTrigger asChild>
                <Link href="/inscripciones" legacyBehavior passHref>
-                <a className={cn(buttonVariants({ size: 'default', className: 'bg-secondary hover:bg-secondary/90 text-secondary-foreground hidden md:inline-flex h-10 rounded-md px-6' }))} aria-label="Inscripciones">
+                <a className={cn(buttonVariants({ size: 'default', className: 'bg-secondary hover:bg-secondary/90 text-secondary-foreground hidden md:inline-flex h-10 px-6 rounded-md' }))} aria-label="Inscripciones">
                   Inscríbete
                 </a>
               </Link>
