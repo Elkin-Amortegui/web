@@ -118,7 +118,7 @@ export default function Header() {
   >(({ className, title, children, href, external, isActive, icon: Icon, ...props }, ref) => {
     const linkContent = (
       <div className="flex items-start gap-3">
-        {Icon && <Icon className={cn("h-6 w-6 shrink-0 mt-1", isActive ? "text-primary-foreground" : "text-primary")} />}
+        {Icon && <Icon className={cn("h-6 w-6 shrink-0 mt-1", isActive ? "text-primary-foreground" : "text-primary group-hover:text-primary-foreground group-focus:text-primary-foreground")} />}
         <div className="flex-grow">
           <div className="text-sm font-medium leading-none">{title}</div>
           {children && (
@@ -254,16 +254,16 @@ export default function Header() {
 
       {/* Main Navigation Bar */}
       <div className="container mx-auto flex h-24 max-w-screen-2xl items-center justify-between px-4 md:px-6">
-        <div className="flex items-center h-full">
+        <div className="flex items-center gap-2 sm:gap-4 h-full shrink-0 min-w-0">
           <Tooltip>
             <TooltipTrigger asChild>
               <Link href="https://www.unillanos.edu.co/index.php" target="_blank" rel="noopener noreferrer" aria-label="Página principal de Unillanos" className="flex items-center h-full">
                 <Image
-                  src="/images/logos/logo-universidad.png" 
+                  src="/images/logos/logo-universidad.png"
                   alt="Logo Unillanos"
-                  width={64} 
-                  height={64} 
-                  className="h-16 w-auto"  
+                  width={64}
+                  height={64}
+                  className="object-contain h-12 w-auto sm:h-16"
                   data-ai-hint="university emblem"
                 />
               </Link>
@@ -271,17 +271,17 @@ export default function Header() {
             <TooltipContent><p>Ir a Unillanos.edu.co</p></TooltipContent>
           </Tooltip>
           
-          <div className="h-16 w-px bg-primary mx-3"></div>
+          <div className="h-12 sm:h-16 w-px bg-primary hidden sm:block shrink-0"></div>
 
           <Tooltip>
             <TooltipTrigger asChild>
-              <Link href="/" className="flex items-center h-full" aria-label="Página de inicio del Centro de Idiomas UNILLANOS">
-                <Image 
-                  src="/images/logos/logo-centro-idiomas-unillanos-color.png" 
-                  alt="Logo Centro de Idiomas UNILLANOS" 
-                  width={213} 
-                  height={64} 
-                  className="h-16 w-auto" 
+              <Link href="/" className="flex items-center h-full min-w-0" aria-label="Página de inicio del Centro de Idiomas UNILLANOS">
+                <Image
+                  src="/images/logos/logo-centro-idiomas-unillanos-color.png"
+                  alt="Logo Centro de Idiomas UNILLANOS"
+                  width={213}
+                  height={64}
+                  className="object-contain h-12 w-auto sm:h-16"
                   data-ai-hint="university language center logo"
                   priority
                 />
@@ -313,8 +313,8 @@ export default function Header() {
                       {item.title}
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
-                       <ul className="bg-popover text-popover-foreground border rounded-lg shadow-lg grid grid-cols-2 gap-3 p-4 min-w-[500px]">
-                        {item.items?.map((subItem) => (
+                       <ul className="grid grid-cols-2 gap-3 p-4 md:w-[500px]">
+                        {item.items?.map((subItem, index) => (
                           <ListItem
                             key={subItem.title}
                             title={subItem.title}
@@ -322,6 +322,9 @@ export default function Header() {
                             external={subItem.external}
                             isActive={pathname === subItem.href}
                             icon={subItem.icon}
+                            className={cn(
+                                item.items && item.items.length % 2 !== 0 && index === item.items.length - 1 ? 'col-span-2' : ''
+                            )}
                           >
                             {subItem.description}
                           </ListItem>

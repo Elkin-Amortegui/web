@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { Facebook, Instagram, Youtube, Phone, Mail, MapPin, Clock, Users, Link as LinkIconLucide, MessageCircle, XIcon, ShieldCheck, ExternalLink } from 'lucide-react';
@@ -19,12 +20,11 @@ const universitySocialLinks = [
 ];
 
 const bottomLogos = [
-  { src: "https://placehold.co/150x60/FFFFFF/1A1A1A?text=Logo+MinEdu", alt: "Logo Ministerio de Educación", aiHint: "government education logo", tooltip: "Visitar Ministerio de Educación (abre en nueva pestaña)", href:"https://www.mineducacion.gov.co/" },
-  { src: "https://placehold.co/150x60/FFFFFF/1A1A1A?text=Logo+ICFES", alt: "Logo ICFES", aiHint: "testing service logo", tooltip: "Visitar ICFES (abre en nueva pestaña)", href:"https://www.icfes.gov.co/" },
-  { src: "https://placehold.co/150x60/FFFFFF/1A1A1A?text=Logo+Meta", alt: "Logo Gobernación del Meta", aiHint: "regional government logo", tooltip: "Visitar Gobernación del Meta (abre en nueva pestaña)", href:"https://www.meta.gov.co/" },
-  { src: "https://placehold.co/150x60/FFFFFF/1A1A1A?text=Logo+ICETEX", alt: "Logo ICETEX", aiHint: "student finance logo", tooltip: "Visitar ICETEX (abre en nueva pestaña)", href:"https://web.icetex.gov.co/" },
-  { src: "https://placehold.co/150x60/FFFFFF/1A1A1A?text=Logo+SUE", alt: "Logo Sistema Universitario Estatal (SUE)", aiHint: "university system logo", tooltip: "Visitar SUE (abre en nueva pestaña)", href:"https://suejesure.edu.co/" },
-  { src: "https://placehold.co/150x60/FFFFFF/1A1A1A?text=Logo+CNA", alt: "Logo Consejo Nacional de Acreditación (CNA)", aiHint: "accreditation council logo", tooltip: "Visitar CNA (abre en nueva pestaña)", href:"https://www.cna.gov.co/" },
+  { src: "/images/logos/logo-mineducacion.png", alt: "Logo Ministerio de Educación", aiHint: "government education logo", tooltip: "Visitar Ministerio de Educación (abre en nueva pestaña)", href:"https://www.mineducacion.gov.co/" },
+  { src: "/images/logos/logo-gobernacion-meta.png", alt: "Logo Gobernación del Meta", aiHint: "regional government logo", tooltip: "Visitar Gobernación del Meta (abre en nueva pestaña)", href:"https://www.meta.gov.co/" },
+  { src: "/images/logos/logo-alcaldia-villavicencio.png", alt: "Logo Alcaldía de Villavicencio", aiHint: "city hall logo", tooltip: "Visitar Alcaldía de Villavicencio (abre en nueva pestaña)", href:"https://www.villavicencio.gov.co/" },
+  { src: "/images/logos/logo-colombia-co.png", alt: "Logo Colombia.co", aiHint: "colombia country brand", tooltip: "Visitar Colombia.co (abre en nueva pestaña)", href:"https://www.colombia.co/" },
+  { src: "/images/logos/logo-gov-co.png", alt: "Logo Gov.co", aiHint: "colombian government portal", tooltip: "Visitar Gov.co (abre en nueva pestaña)", href:"https://www.gov.co/" },
 ];
 
 export default function Footer() {
@@ -174,7 +174,7 @@ export default function Footer() {
       <div className="container mx-auto px-4 md:px-6 py-10">
         <div className="mb-8">
           {/* Título "Entidades y Alianzas" removido */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 items-center">
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 items-center">
             {bottomLogos.map((logo, index) => (
               <Tooltip key={index}>
                 <TooltipTrigger asChild>
