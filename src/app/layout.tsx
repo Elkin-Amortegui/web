@@ -7,9 +7,12 @@ import FloatingButtons from '@/components/layout/FloatingButtons';
 import { TooltipProvider } from '@/components/ui/tooltip'; 
 
 export const metadata: Metadata = {
-  title: 'Centro de Idiomas UNILLANOS',
+  title: 'Centro de Idiomas de la Universidad de los Llanos',
   description: 'Aprende idiomas y transforma tu futuro en el Centro de Idiomas de la Universidad de los Llanos. Cursos de inglés, francés, alemán y portugués.',
   keywords: "Cursos de idiomas Villavicencio, Centro de Idiomas UNILLANOS, Aprender inglés Meta, Unillanos idiomas, aprender frances, aprender aleman, aprender portugues, UNILLANOS",
+  icons: {
+    icon: '/idiomas-unillanos.ico',
+  },
 };
 
 export default function RootLayout({

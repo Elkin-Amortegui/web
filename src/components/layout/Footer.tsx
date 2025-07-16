@@ -22,7 +22,7 @@ const universitySocialLinks = [
 const bottomLogos = [
   { src: "/images/logos/logo-mineducacion.png", alt: "Logo Ministerio de Educación", aiHint: "government education logo", tooltip: "Visitar Ministerio de Educación (abre en nueva pestaña)", href:"https://www.mineducacion.gov.co/" },
   { src: "/images/logos/logo-gobernacion-meta.png", alt: "Logo Gobernación del Meta", aiHint: "regional government logo", tooltip: "Visitar Gobernación del Meta (abre en nueva pestaña)", href:"https://www.meta.gov.co/" },
-  { src: "/images/logos/logo-alcaldia-villavicencio.png", alt: "Logo Alcaldía de Villavicencio", aiHint: "city hall logo", tooltip: "Visitar Alcaldía de Villavicencio (abre en nueva pestaña)", href:"https://www.villavicencio.gov.co/" },
+  { src: "/images/villavicencio-unidos-podemos-logo.png", alt: "Logo Alcaldía de Villavicencio", aiHint: "city hall logo", tooltip: "Visitar Alcaldía de Villavicencio (abre en nueva pestaña)", href:"https://www.villavicencio.gov.co/" },
   { src: "/images/logos/logo-colombia-co.png", alt: "Logo Colombia.co", aiHint: "colombia country brand", tooltip: "Visitar Colombia.co (abre en nueva pestaña)", href:"https://www.colombia.co/" },
   { src: "/images/logos/logo-gov-co.png", alt: "Logo Gov.co", aiHint: "colombian government portal", tooltip: "Visitar Gov.co (abre en nueva pestaña)", href:"https://www.gov.co/" },
 ];
@@ -38,33 +38,33 @@ export default function Footer() {
           <div className="space-y-4">
             <Tooltip>
               <TooltipTrigger asChild>
-                <Link href="https://www.unillanos.edu.co" target="_blank" rel="noopener noreferrer" aria-label="Página de inicio de Unillanos">
+                <Link href="/" aria-label="Página de inicio del Centro de Idiomas">
                   <Image
-                    src="/images/unillanos-logo-white.png"
-                    alt="Logo Unillanos"
+                    src="/images/logos/logo-centro-idiomas-unillanos-color.png"
+                    alt="Logo Centro de Idiomas UNILLANOS"
                     width={200}
                     height={55}
                     className="h-auto mb-3"
+                    data-ai-hint="language center logo"
+                  />
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent><p>Ir a la página de inicio del Centro de Idiomas</p></TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                 <Link href="https://www.unillanos.edu.co" target="_blank" rel="noopener noreferrer" aria-label="Página de inicio de Unillanos">
+                  <Image
+                    src="/images/logos/logo-unillanos-color.png"
+                    alt="Logo Unillanos"
+                    width={200}
+                    height={50}
                     data-ai-hint="university logo"
+                    className="h-auto"
                   />
                 </Link>
               </TooltipTrigger>
               <TooltipContent><p>Visitar página principal de Unillanos (abre en nueva pestaña)</p></TooltipContent>
-            </Tooltip>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <a href="https://www.villavicencio.gov.co" target="_blank" rel="noopener noreferrer" aria-label="Alcaldía de Villavicencio">
-                  <Image
-                    src="/images/villavicencio-unidos-podemos-logo.png" 
-                    alt="Logo Villavicencio Unidos Podemos"
-                    width={180}
-                    height={50}
-                    data-ai-hint="city partnership logo"
-                    className="h-auto"
-                  />
-                </a>
-              </TooltipTrigger>
-              <TooltipContent><p>Visitar página de la Alcaldía de Villavicencio (abre en nueva pestaña)</p></TooltipContent>
             </Tooltip>
           </div>
 
