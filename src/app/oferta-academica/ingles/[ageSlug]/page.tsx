@@ -2,7 +2,7 @@
 import { englishPrograms } from '@/app/oferta-academica/LanguageData';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { ArrowLeft, Download, BookOpen } from 'lucide-react';
+import { ArrowLeft, BookOpen } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import ImageBrochureViewer from '@/components/ImageBrochureViewer'; 
@@ -70,17 +70,6 @@ export default async function EnglishProgramDetailPage({ params }: { params: { a
         </CardContent>
       </Card>
 
-      {program.pdfUrl && program.pdfUrl !== '#' && (
-        <div className="mt-8 text-center">
-            <Button asChild variant="outline" size="lg">
-                <a href={program.pdfUrl} target="_blank" rel="noopener noreferrer" download={`Brochure-Ingles-${program.slug}.pdf`}>
-                <Download className="mr-2 h-5 w-5" />
-                Descargar Brochure Completo (PDF)
-                </a>
-            </Button>
-        </div>
-      )}
-
       <div className="mt-16 text-center bg-background/50 p-8 rounded-lg shadow-md">
         <h3 className="font-headline text-2xl text-primary mb-4">¿Interesado en este programa?</h3>
         <p className="text-lg text-foreground/80 mb-6 max-w-xl mx-auto">
@@ -98,4 +87,3 @@ export default async function EnglishProgramDetailPage({ params }: { params: { a
     </div>
   );
 }
-

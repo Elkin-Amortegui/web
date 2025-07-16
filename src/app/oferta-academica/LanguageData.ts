@@ -123,7 +123,9 @@ export const englishPrograms: EnglishProgram[] = [
     image: 'https://placehold.co/800x450/f87171/ffffff?text=Inglés+5-6+años',
     aiHint: 'children playing learning',
     pdfUrl: '#', // Placeholder
-    brochureImagePages: ['https://placehold.co/800x1100/f87171/ffffff?text=Brochure+5-6+años']
+    brochureImagePages: ['/images/oferta-academica/ingles/brochure/5-6/5-6-page-0001.jpg','/images/oferta-academica/ingles/brochure/5-6/5-6-page-0002.jpg','/images/oferta-academica/ingles/brochure/5-6/5-6-page-0003.jpg','/images/oferta-academica/ingles/brochure/5-6/5-6-page-0004.jpg','/images/oferta-academica/ingles/brochure/5-6/5-6-page-0005.jpg',
+      '/images/oferta-academica/ingles/brochure/5-6/5-6-page-0006.jpg','/images/oferta-academica/ingles/brochure/5-6/5-6-page-0007.jpg','/images/oferta-academica/ingles/brochure/5-6/5-6-page-0008.jpg','/images/oferta-academica/ingles/brochure/5-6/5-6-page-0009.jpg','/images/oferta-academica/ingles/brochure/5-6/5-6-page-0010.jpg','/images/oferta-academica/ingles/brochure/5-6/5-6-page-0011.jpg',
+      '/images/oferta-academica/ingles/brochure/5-6/5-6-page-0012.jpg','/images/oferta-academica/ingles/brochure/5-6/5-6-page-0013.jpg','/images/oferta-academica/ingles/brochure/5-6/5-6-page-0014.jpg','/images/oferta-academica/ingles/brochure/5-6/5-6-page-0015.jpg','/images/oferta-academica/ingles/brochure/5-6/5-6-page-0016.jpg','/images/oferta-academica/ingles/brochure/5-6/5-6-page-0017.jpg','/images/oferta-academica/ingles/brochure/5-6/5-6-page-0018.jpg',]
   },
   {
     name: 'Inglés para niños de 7 y 8 años',
