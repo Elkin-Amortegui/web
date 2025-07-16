@@ -2,58 +2,17 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import Link from 'next/link';
-import { BookMarked, BookOpenCheck } from 'lucide-react'; // Added BookOpenCheck
+import { BookOpenCheck, Rocket } from 'lucide-react'; 
 import Image from 'next/image';
+import { languages } from './LanguageData';
+import { cn } from '@/lib/utils';
 
-// Placeholder data for languages - expanded with slug and pdfUrl
-const languages = [
-  { 
-    name: 'Inglés', 
-    slug: 'ingles',
-    description: 'Domina el idioma global para nuevas oportunidades profesionales y culturales.', 
-    levels: 'A1-C1', 
-    modalities: 'Presencial, Virtual, Intensivo',
-    image: 'https://placehold.co/400x250/00723F/FFFFFF?text=Inglés',
-    aiHint: 'english language classroom',
-    pdfUrl: 'https://www.unillanos.edu.co/images/documentos/dependencias/CEI/INSTRUCTIVO_INGLES_2024-1.pdf' // Example PDF
-  },
-  { 
-    name: 'Francés', 
-    slug: 'frances',
-    description: 'Sumérgete en una cultura rica y expande tus horizontes literarios y artísticos.', 
-    levels: 'A1-B2', 
-    modalities: 'Presencial, Semi-intensivo',
-    image: 'https://placehold.co/400x250/FFD100/333333?text=Francés',
-    aiHint: 'french culture paris',
-    pdfUrl: 'https://www.unillanos.edu.co/images/documentos/dependencias/CEI/INSTRUCTIVO_FRANCES_2024-1.pdf' // Example PDF
-  },
-  { 
-    name: 'Alemán', 
-    slug: 'aleman',
-    description: 'Abre puertas en ciencia, tecnología, ingeniería y filosofía.', 
-    levels: 'A1-B1', 
-    modalities: 'Presencial',
-    image: 'https://placehold.co/400x250/005DAA/FFFFFF?text=Alemán',
-    aiHint: 'german engineering technology',
-    pdfUrl: 'https://www.unillanos.edu.co/images/documentos/dependencias/CEI/INSTRUCTIVO_ALEMAN_2024-1.pdf' // Example PDF
-  },
-  { 
-    name: 'Portugués', 
-    slug: 'portugues',
-    description: 'Conecta con vibrantes culturas de América Latina y Europa.', 
-    levels: 'A1-B1', 
-    modalities: 'Presencial, Virtual',
-    image: 'https://placehold.co/400x250/4CAF50/FFFFFF?text=Portugués',
-    aiHint: 'portuguese culture brazil',
-    pdfUrl: 'https://www.unillanos.edu.co/images/documentos/dependencias/CEI/INSTRUCTIVO_PORTUGUES_2024-1.pdf' // Example PDF
-  },
-];
 
 export default function AcademicOfferPage() {
   return (
     <div className="container mx-auto px-4 md:px-6 py-12 md:py-16">
       <header className="text-center mb-12 md:mb-16">
-        <BookOpenCheck className="mx-auto h-16 w-16 text-primary mb-4" /> {/* Changed Icon */}
+        <BookOpenCheck className="mx-auto h-16 w-16 text-primary mb-4" />
         <h1 className="font-headline text-4xl md:text-5xl font-bold text-primary mb-4">
           Oferta Académica
         </h1>
@@ -62,31 +21,31 @@ export default function AcademicOfferPage() {
         </p>
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-12"> {/* Changed to lg:grid-cols-2 for better card display */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         {languages.map((lang) => (
-          <Card key={lang.name} className="shadow-lg hover:shadow-xl transition-shadow flex flex-col">
-            <CardHeader className="p-0 relative">
+            <Link 
+              key={lang.slug} 
+              href={`/oferta-academica/${lang.slug}`} 
+              className={cn(
+                  "group relative rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 h-64 flex items-end p-6 text-white text-center",
+                  "focus:outline-none focus:ring-4 focus:ring-primary/50"
+              )}
+            >
               <Image 
                 src={lang.image} 
-                alt={`Curso de ${lang.name}`} 
-                width={400} 
-                height={200} 
-                className="w-full h-48 object-cover rounded-t-lg"
+                alt={lang.name} 
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                 data-ai-hint={lang.aiHint}
               />
-            </CardHeader>
-            <CardContent className="p-6 flex-grow flex flex-col">
-              <CardTitle className="text-2xl text-primary mb-2">{lang.name}</CardTitle>
-              <CardDescription className="text-foreground/80 mb-3 flex-grow">{lang.description}</CardDescription>
-              <div className="space-y-1 text-sm mt-auto">
-                <p><strong className="text-primary/90">Niveles:</strong> {lang.levels}</p>
-                <p><strong className="text-primary/90">Modalidades:</strong> {lang.modalidades}</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+              <div className="relative z-10 w-full">
+                <Rocket className="mx-auto h-10 w-10 mb-2 opacity-80 group-hover:opacity-100 transition-opacity" />
+                <h3 className="font-headline text-2xl font-bold text-white">{lang.name}</h3>
+                <p className="text-sm opacity-90">{lang.shortDescription}</p>
               </div>
-              <Button asChild className="mt-4 bg-secondary hover:bg-secondary/90 text-secondary-foreground w-full">
-                <Link href={`/oferta-academica/${lang.slug}`}>Ver Detalles y Brochure</Link>
-              </Button>
-            </CardContent>
-          </Card>
+            </Link>
         ))}
       </div>
       
