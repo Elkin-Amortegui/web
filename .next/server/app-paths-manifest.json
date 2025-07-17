@@ -1,7 +1,4 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
   "/oferta-academica/ingles/[ageSlug]/page": "app/oferta-academica/ingles/[ageSlug]/page.js",
-  "/oferta-academica/ingles/page": "app/oferta-academica/ingles/page.js",
-  "/oferta-academica/page": "app/oferta-academica/page.js",
   "/page": "app/page.js"
 }
