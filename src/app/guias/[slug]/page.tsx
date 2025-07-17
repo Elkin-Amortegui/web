@@ -12,12 +12,6 @@ async function getGuideData(slug: string): Promise<Guide | null> {
   return guide || null;
 }
 
-export async function generateStaticParams() {
-  return guiasData.map((guide) => ({
-    slug: guide.slug,
-  }));
-}
-
 export default async function GuideDetailPage({ params }: { params: { slug: string } }) {
   const guide = await getGuideData(params.slug);
 
