@@ -26,7 +26,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { 
   Menu, Search, X, Facebook, Youtube, MessageCircle, ChevronDown, UserCircle, ExternalLink, LibraryBig,
-  BookOpenCheck, DollarSign, CalendarHeart, Newspaper, ClipboardList, Gavel, Users, Mail, MapPin
+  BookOpenCheck, DollarSign, CalendarHeart, Newspaper, ClipboardList, Gavel, Users, Mail, MapPin,
+  HelpCircle, UserPlus
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
@@ -66,6 +67,8 @@ const mainNavItems: NavItem[] = [
     items: [
       { title: 'Trámites', href: '/tramites', description: 'Procesos administrativos.', icon: ClipboardList },
       { title: 'Tutoriales y Guías', href: '/tutoriales', description: 'Ayuda y recursos.', icon: Youtube },
+      { title: 'Proceso de Inscripción', href: '/proceso-inscripcion', description: 'Cómo unirte a nuestros cursos.', icon: UserPlus },
+      { title: 'Preguntas Frecuentes', href: '/preguntas-frecuentes', description: 'Resuelve tus dudas.', icon: HelpCircle },
     ],
   },
   {
