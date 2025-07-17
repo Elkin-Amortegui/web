@@ -1,13 +1,13 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogTrigger, DialogClose, DialogTitle } from '@/components/ui/dialog';
-import { X, ZoomIn, ZoomOut, RotateCcw, ChevronLeft, ChevronRight, Expand } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { Dialog, DialogContent, DialogClose, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { X, ZoomIn, ZoomOut, RotateCcw, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
-
+import { cn } from '@/lib/utils';
 
 interface ImageLightboxProps {
   pages: string[];
@@ -60,6 +60,8 @@ export default function ImageLightbox({
   const handleMouseUp = () => setIsDragging(false);
   
   const handleClose = () => setIsOpen(false);
+  
+  const totalPages = pages.length;
 
   const goToNextPage = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -67,7 +69,7 @@ export default function ImageLightbox({
     if (isMobile) {
       setCurrentIndex((prev) => Math.min(prev + 1, totalPages - 1));
     } else {
-      if (currentIndex === 0) {
+      if (currentIndex === 0) { // From cover to first spread
         setCurrentIndex(1);
       } else {
         setCurrentIndex((prev) => Math.min(prev + 2, totalPages - 1));
@@ -81,7 +83,7 @@ export default function ImageLightbox({
     if (isMobile) {
       setCurrentIndex((prev) => Math.max(0, prev - 1));
     } else {
-      if (currentIndex === 1) {
+      if (currentIndex === 1) { // From first spread back to cover
         setCurrentIndex(0);
       } else {
         setCurrentIndex((prev) => Math.max(0, prev - 2));
@@ -89,16 +91,26 @@ export default function ImageLightbox({
     }
   };
 
-  const totalPages = pages.length;
+  const isLastPageSingle = totalPages % 2 === 0;
 
   const getPageLabel = () => {
     if (totalPages === 1) return "Página 1";
     if (isMobile) return `Página ${currentIndex + 1}`;
+    
+    // Desktop
     if (currentIndex === 0) return "Portada";
-    if (currentIndex >= totalPages - 1) return `Página ${totalPages}`;
-    return `Páginas ${currentIndex}-${currentIndex + 1}`;
+    if (!isLastPageSingle && currentIndex === totalPages - 1) return `Página ${totalPages}`;
+    
+    const startPage = currentIndex;
+    const endPage = currentIndex + 1;
+    return `Páginas ${startPage}-${endPage}`;
   };
 
+  const isCover = currentIndex === 0;
+  const isFinalPageAndOdd = !isLastPageSingle && currentIndex === totalPages - 1;
+
+  const showSinglePageInLightbox = isMobile || isCover || (isFinalPageAndOdd && !isMobile);
+  
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild onClick={() => setIsOpen(true)}>
@@ -127,66 +139,64 @@ export default function ImageLightbox({
             <Button variant="outline" size="icon" onClick={goToPreviousPage} disabled={currentIndex === 0} className="absolute left-2 top-1/2 -translate-y-1/2 z-20 rounded-full h-12 w-12">
               <ChevronLeft className="h-6 w-6"/>
             </Button>
-            <Button variant="outline" size="icon" onClick={goToNextPage} disabled={currentIndex >= totalPages - 1} className="absolute right-2 top-1/2 -translate-y-1/2 z-20 rounded-full h-12 w-12">
+            <Button variant="outline" size="icon" onClick={goToNextPage} disabled={currentIndex >= totalPages -1} className="absolute right-2 top-1/2 -translate-y-1/2 z-20 rounded-full h-12 w-12">
               <ChevronRight className="h-6 w-6"/>
             </Button>
           </>
         )}
 
         <div 
-          className="w-full h-full flex items-center justify-center overflow-hidden p-8"
+          className="w-full h-full flex items-center justify-center overflow-hidden"
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseUp}
         >
           <div
-            className="flex justify-center items-stretch transition-transform duration-200 ease-out gap-2"
+            className="flex justify-center items-center transition-transform duration-200 ease-out p-8"
             style={{
               transform: `scale(${zoomLevel}) translate(${position.x / zoomLevel}px, ${position.y / zoomLevel}px)`,
               cursor: isDragging && zoomLevel > 1 ? 'grabbing' : (zoomLevel > 1 ? 'grab' : 'default'),
-              height: '90%',
-              width: '90%',
-              maxWidth: isMobile || currentIndex === 0 || currentIndex >= totalPages-1 ? '50%' : '1600px',
             }}
           >
-             {/* Mobile View */}
-             {isMobile && (
-                <div className="flex justify-center items-center h-full w-full">
-                  <Image src={pages[currentIndex]} alt={`Página ${currentIndex + 1}`} width={800} height={1100} className="object-contain h-full w-auto shadow-lg" />
-                </div>
-             )}
-
-             {/* Desktop View */}
-             {!isMobile && (
-                <>
-                  {currentIndex === 0 && (
-                    <div className="w-full h-full flex justify-center items-center">
-                        <Image src={pages[0]} alt="Portada" width={800} height={1100} className="object-contain h-full w-auto shadow-lg" />
-                    </div>
+            {showSinglePageInLightbox ? (
+              <div className="flex justify-center items-center max-w-[90vw] max-h-[90vh]">
+                 <Image 
+                  src={pages[currentIndex]} 
+                  alt={`Página ${currentIndex + 1}`} 
+                  width={800} height={1100} 
+                  className="object-contain shadow-lg max-w-full max-h-full w-auto h-auto md:max-w-[45vw]"
+                 />
+              </div>
+            ) : (
+              <div className="flex justify-center items-center gap-2 max-w-[90vw] max-h-[90vh]">
+                  <Image 
+                    src={pages[currentIndex]} 
+                    alt={`Página ${currentIndex + 1}`} 
+                    width={800} 
+                    height={1100} 
+                    className="object-contain shadow-lg max-w-[45vw] max-h-[90vh] w-auto h-auto"
+                   />
+                  {currentIndex + 1 < totalPages && (
+                    <Image 
+                      src={pages[currentIndex + 1]} 
+                      alt={`Página ${currentIndex + 2}`} 
+                      width={800} 
+                      height={1100} 
+                      className="object-contain shadow-lg max-w-[45vw] max-h-[90vh] w-auto h-auto" 
+                    />
                   )}
-                  {currentIndex > 0 && (
-                      <div className="w-full h-full flex justify-center items-center gap-2">
-                          <div className="w-1/2 flex justify-end">
-                            <Image src={pages[currentIndex - 1]} alt={`Página ${currentIndex}`} width={800} height={1100} className="object-contain h-full w-auto shadow-lg" />
-                          </div>
-                          <div className="w-1/2 flex justify-start">
-                             {currentIndex < totalPages && (
-                                <Image src={pages[currentIndex]} alt={`Página ${currentIndex + 1}`} width={800} height={1100} className="object-contain h-full w-auto shadow-lg" />
-                             )}
-                          </div>
-                      </div>
-                  )}
-                </>
-             )}
+              </div>
+            )}
           </div>
         </div>
 
         {totalPages > 1 && (
             <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-20 bg-background/80 px-3 py-1 rounded-full text-sm">
-                {getPageLabel()} / {totalPages}
+                {/* Simplified label */}
             </div>
         )}
       </DialogContent>
     </Dialog>
   );
 }
+
