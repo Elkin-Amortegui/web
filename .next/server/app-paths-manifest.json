@@ -1,4 +1,15 @@
 {
+  "/actividades/page": "app/actividades/page.js",
+  "/como-llegar/page": "app/como-llegar/page.js",
+  "/contacto/page": "app/contacto/page.js",
+  "/normativa/page": "app/normativa/page.js",
+  "/noticias/page": "app/noticias/page.js",
   "/oferta-academica/ingles/[ageSlug]/page": "app/oferta-academica/ingles/[ageSlug]/page.js",
-  "/page": "app/page.js"
+  "/oferta-academica/ingles/page": "app/oferta-academica/ingles/page.js",
+  "/oferta-academica/page": "app/oferta-academica/page.js",
+  "/page": "app/page.js",
+  "/quienes-somos/page": "app/quienes-somos/page.js",
+  "/tramites/page": "app/tramites/page.js",
+  "/tutoriales/page": "app/tutoriales/page.js",
+  "/valores/page": "app/valores/page.js"
 }
