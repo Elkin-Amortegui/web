@@ -1,5 +1,7 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
   "/actividades/page": "app/actividades/page.js",
+  "/calendario-academico/page": "app/calendario-academico/page.js",
   "/como-llegar/page": "app/como-llegar/page.js",
   "/contacto/page": "app/contacto/page.js",
   "/inscripciones/page": "app/inscripciones/page.js",

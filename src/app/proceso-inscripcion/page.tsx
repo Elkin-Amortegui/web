@@ -1,41 +1,41 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Check, Search, DollarSign, FileCheck, UserPlus, Info } from 'lucide-react';
+import { Check, Search, DollarSign, FileCheck, UserPlus, Info, CalendarClock, Users, FileUp, ListChecks, MailCheck, UserCheck, AlertTriangle } from 'lucide-react';
 import Link from 'next/link';
 
-const steps = [
+const newStudentSteps = [
   {
     step: 1,
     icon: Search,
-    title: "Consulta la Oferta",
-    description: "Explora nuestros cursos de Inglés, Francés, Alemán y Portugués. Revisa los niveles, horarios y modalidades disponibles para encontrar el programa perfecto para ti.",
-    link: "/oferta-academica",
-    linkLabel: "Ver Oferta Académica"
+    title: "Inscripción en Línea",
+    description: "Realiza tu inscripción a través del portal oficial durante las fechas de convocatoria. ¡Este es el primer paso para unirte a nosotros!",
+    link: "/inscripciones",
+    linkLabel: "Ir a Inscripciones"
   },
   {
     step: 2,
-    icon: Check,
-    title: "Examen de Clasificación (Si es necesario)",
-    description: "Si ya tienes conocimientos previos, presenta nuestro examen de clasificación para ubicarte en el nivel correcto y optimizar tu ruta de aprendizaje.",
-     link: "/tramites/inscripcion-examen-clasificacion",
-    linkLabel: "Info Examen de Clasificación"
+    icon: ListChecks,
+    title: "Lista de Admitidos",
+    description: "Una vez cerrado el proceso, se publicará la lista de admitidos. Si no estás en la lista, quedarás en lista de espera. ¡Mantente atento!",
+    link: "/noticias",
+    linkLabel: "Ver Noticias"
   },
   {
     step: 3,
-    icon: DollarSign,
-    title: "Realiza el Pago",
-    description: "Consulta los valores y tarifas actualizados. Realiza el pago de tu matrícula a través de los canales autorizados por la universidad para asegurar tu cupo.",
+    icon: MailCheck,
+    title: "Notificación y Pago",
+    description: "Los admitidos recibirán una notificación por correo para generar el recibo de pago. Realiza el pago para asegurar tu cupo.",
     link: "/valores",
-    linkLabel: "Ver Tarifas"
+    linkLabel: "Consultar Valores"
   },
   {
     step: 4,
-    icon: FileCheck,
-    title: "Legaliza tu Matrícula",
-    description: "Presenta los documentos requeridos (identidad, comprobante de pago, etc.) en la oficina del Centro de Idiomas o sigue las instrucciones en línea para formalizar tu inscripción. ¡Y listo!",
-    link: "/contacto",
-    linkLabel: "Contactar para Legalizar"
+    icon: FileUp,
+    title: "Carga de Documentos",
+    description: "Sube los documentos requeridos en la plataforma para formalizar tu matrícula. Revisa la lista de documentos más abajo.",
+    link: "#documentos",
+    linkLabel: "Ver Documentos"
   }
 ];
 
@@ -48,64 +48,116 @@ export default function ProcesoInscripcionPage() {
           Proceso de Inscripción
         </h1>
         <p className="text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto">
-          Sigue estos sencillos pasos para unirte a la comunidad del Centro de Idiomas UNILLANOS.
+          Aquí encontrarás toda la información para unirte a la comunidad del Centro de Idiomas UNILLANOS.
         </p>
       </header>
 
-      <div className="relative max-w-4xl mx-auto">
-        {/* Línea de tiempo decorativa */}
-        <div className="absolute left-1/2 top-10 bottom-10 w-1 bg-primary/20 rounded-full hidden md:block" aria-hidden="true"></div>
-
-        <div className="space-y-12">
-          {steps.map((step, index) => (
-            <div key={step.step} className={`flex flex-col md:flex-row items-center gap-8 animate-in fade-in-0 delay-${index * 150} duration-500`}>
-              {/* Contenido de la tarjeta */}
-              <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:order-1' : 'md:order-3'}`}>
-                <Card className="shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out group hover:-translate-y-1 hover:border-secondary border-2 border-transparent">
-                  <CardHeader>
-                    <CardDescription className="text-primary font-bold">Paso {step.step}</CardDescription>
-                    <CardTitle className="font-headline text-2xl text-primary flex items-center gap-3">
-                      <step.icon className="h-8 w-8 text-secondary" />
-                      {step.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-foreground/80 mb-6">{step.description}</p>
-                    <Button asChild variant="outline">
-                      <Link href={step.link}>{step.linkLabel}</Link>
-                    </Button>
-                  </CardContent>
-                </Card>
+      <Card className="mb-12 bg-accent/10 border-accent/20 p-6 shadow-lg animate-in fade-in-0 delay-150 duration-500">
+          <div className="flex flex-col md:flex-row items-center gap-4">
+            <CalendarClock className="h-12 w-12 text-accent shrink-0" />
+            <div>
+              <CardTitle className="text-xl text-accent">Calendario Académico</CardTitle>
+              <CardDescription className="text-foreground/90 mt-1">
+                Todos los procesos de inscripción, matrícula y desarrollo de cursos están sujetos a las fechas estipuladas en el calendario académico, el cual puede tener modificaciones.
+              </CardDescription>
+              <div className="flex gap-4 mt-4">
+                <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground">
+                  <Link href="/calendario-academico">Consultar Calendario</Link>
+                </Button>
               </div>
-
-              {/* Icono de la línea de tiempo */}
-              <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold shadow-lg md:order-2">
-                {step.step}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <Card className="mt-16 max-w-3xl mx-auto bg-destructive/10 border-destructive/20 p-6 shadow-lg animate-in fade-in-0 slide-in-from-bottom-10 delay-700 duration-500">
-        <div className="flex flex-col md:flex-row items-center gap-4">
-          <Info className="h-12 w-12 text-destructive shrink-0" />
-          <div>
-            <CardTitle className="text-xl text-destructive">¿Aún tienes dudas?</CardTitle>
-            <CardDescription className="text-destructive/90 mt-1">
-              Recuerda que las convocatorias de inscripción se anuncian en fechas específicas. Mantente atento a nuestras noticias y redes sociales. Si tienes alguna pregunta, no dudes en contactarnos.
-            </CardDescription>
-            <div className="flex gap-4 mt-4">
-              <Button asChild variant="destructive" className="bg-destructive hover:bg-destructive/90 text-destructive-foreground">
-                <Link href="/contacto">Contactar Ahora</Link>
-              </Button>
-               <Button asChild variant="outline" className="border-destructive text-destructive hover:bg-destructive/10">
-                <Link href="/noticias">Ver Noticias</Link>
-              </Button>
             </div>
           </div>
+        </Card>
+
+      {/* Flujo para Estudiantes Nuevos */}
+      <section className="mb-16">
+        <h2 className="font-headline text-3xl font-bold text-center mb-10 text-primary flex items-center justify-center gap-3 animate-in fade-in-0 delay-200 duration-500"><UserCheck className="h-8 w-8" />Para Estudiantes Nuevos</h2>
+        <div className="relative max-w-4xl mx-auto">
+          <div className="absolute left-1/2 top-10 bottom-10 w-1 bg-primary/20 rounded-full hidden md:block" aria-hidden="true"></div>
+          <div className="space-y-12 md:space-y-0">
+            {newStudentSteps.map((step, index) => (
+              <div key={step.step} className={`md:flex items-center w-full ${index % 2 === 0 ? 'md:justify-start' : 'md:justify-end'} mb-12 md:mb-0`}>
+                <div className="md:w-1/2">
+                  <div className={`animate-in fade-in-0 delay-${200 + index * 150} duration-500 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>
+                     <Card className="shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out group hover:-translate-y-1 hover:border-secondary border-2 border-transparent">
+                        <CardHeader>
+                          <CardDescription className="text-primary font-bold">Paso {step.step}</CardDescription>
+                          <CardTitle className="font-headline text-2xl text-primary flex items-center gap-3">
+                            <step.icon className="h-8 w-8 text-secondary transition-transform duration-300 group-hover:rotate-6" />
+                            {step.title}
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <p className="text-foreground/80 mb-6">{step.description}</p>
+                          <Button asChild variant="outline">
+                            <Link href={step.link}>{step.linkLabel}</Link>
+                          </Button>
+                        </CardContent>
+                      </Card>
+                  </div>
+                </div>
+                 <div className="hidden md:block absolute left-1/2 -translate-x-1/2 w-16 h-16 bg-primary text-primary-foreground rounded-full items-center justify-center text-2xl font-bold shadow-lg transition-transform duration-300 hover:scale-110">
+                    <span className="flex items-center justify-center h-full">{step.step}</span>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      </Card>
+      </section>
+
+
+      {/* Sección para Estudiantes Antiguos */}
+       <section className="mb-16">
+        <h2 className="font-headline text-3xl font-bold text-center mb-10 text-primary flex items-center justify-center gap-3 animate-in fade-in-0 delay-300 duration-500"><Users className="h-8 w-8" />Para Estudiantes Antiguos</h2>
+        <Card className="max-w-3xl mx-auto bg-card border p-6 shadow-lg animate-in fade-in-0 delay-400 duration-500">
+          <div className="flex flex-col md:flex-row items-center gap-4">
+            <Info className="h-12 w-12 text-primary shrink-0" />
+            <div>
+              <CardTitle className="text-xl text-primary">Proceso de Renovación</CardTitle>
+              <CardDescription className="text-foreground/80 mt-1 space-y-2">
+                <p>El proceso para estudiantes antiguos es más directo. Debes esperar la notificación de creación de recibos de pago en tu correo electrónico institucional, en los tiempos establecidos en el calendario académico.</p>
+                <p>Posteriormente, deberás cargar los documentos requeridos para sentar tu matrícula en las fechas correspondientes.</p>
+              </CardDescription>
+            </div>
+          </div>
+        </Card>
+      </section>
+
+      {/* Sección de Documentos */}
+      <section id="documentos">
+         <h2 className="font-headline text-3xl font-bold text-center mb-10 text-primary animate-in fade-in-0 delay-500 duration-500">Documentos Requeridos</h2>
+         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <Card className="animate-in fade-in-0 slide-in-from-left-10 delay-600 duration-500 shadow-lg">
+                <CardHeader>
+                    <CardTitle className="text-xl text-primary flex items-center gap-2"><UserCheck className="h-6 w-6" />Nuevos</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <ul className="list-disc list-inside space-y-2 text-foreground/90">
+                        <li>Recibo de pago del semestre vigente</li>
+                        <li>Formulario de inscripción diligenciado</li>
+                        <li>Documento de identidad del estudiante</li>
+                        <li>Fotocopia documento identidad acudiente</li>
+                        <li>Fotografía 3x4</li>
+                        <li>Certificado de afiliación a EPS vigente</li>
+                    </ul>
+                </CardContent>
+            </Card>
+             <Card className="animate-in fade-in-0 slide-in-from-right-10 delay-600 duration-500 shadow-lg">
+                <CardHeader>
+                    <CardTitle className="text-xl text-primary flex items-center gap-2"><Users className="h-6 w-6" />Antiguos</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <ul className="list-disc list-inside space-y-2 text-foreground/90">
+                        <li>Recibo de pago del semestre vigente</li>
+                        <li>Documento de identidad del estudiante</li>
+                        <li>Fotocopia documento identidad acudiente</li>
+                        <li>Paz y salvo</li>
+                        <li>Certificado de afiliación a EPS vigente</li>
+                    </ul>
+                </CardContent>
+            </Card>
+         </div>
+      </section>
 
     </div>
   );
