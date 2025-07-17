@@ -57,7 +57,7 @@ export default async function GuideDetailPage({ params }: { params: { slug: stri
             {Array.isArray(guide.targetAudience) && guide.targetAudience.length > 0 && (
               <div className="flex items-center">
                 <Users className="mr-2 h-4 w-4" />
-                <span>Dirigido a: {guide.targetAudience.join(', ')}</span>
+                <span>Dirigido a: {(Array.isArray(guide.targetAudience) ? guide.targetAudience : []).join(', ')}</span>
               </div>
             )}
           </div>
