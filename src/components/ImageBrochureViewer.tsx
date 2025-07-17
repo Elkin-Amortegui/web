@@ -26,20 +26,18 @@ export default function ImageBrochureViewer({ pages, languageName }: ImageBrochu
   const totalPages = pages.length;
 
   const goToNextPage = () => {
-    handleResetZoom();
     if (isMobile) {
       setCurrentIndex((prev) => Math.min(prev + 1, totalPages - 1));
     } else {
       if (currentIndex === 0) {
         setCurrentIndex(1); // From cover to first spread
       } else {
-        setCurrentIndex((prev) => Math.min(prev + 2, totalPages - 1));
+        setCurrentIndex((prev) => Math.min(prev + 2, totalPages - 2));
       }
     }
   };
 
   const goToPreviousPage = () => {
-    handleResetZoom();
     if (isMobile) {
        setCurrentIndex((prev) => Math.max(0, prev - 1));
     } else {
@@ -51,54 +49,63 @@ export default function ImageBrochureViewer({ pages, languageName }: ImageBrochu
     }
   };
   
-  const handleResetZoom = () => {
-    // This function is a placeholder for potential future zoom controls
-    // outside the lightbox. For now, it does nothing.
-  };
-
   const getPageLabel = () => {
-    if (totalPages === 1) return "Página 1";
-    if (isMobile) {
-       return `Página ${currentIndex + 1}`;
+    if (isMobile) return `Página ${currentIndex + 1} de ${totalPages}`;
+    
+    if (currentIndex === 0) return `Portada (Pág. 1)`;
+    
+    // Check if the last page should be displayed alone
+    const lastPageIsUnpaired = totalPages % 2 === 0 && currentIndex >= totalPages - 1;
+    if (lastPageIsUnpaired) {
+      return `Página ${currentIndex} de ${totalPages}`;
     }
-    // Desktop view
-    if (currentIndex === 0) return "Portada";
-    if (currentIndex >= totalPages - 1) return `Página ${totalPages}`;
-    return `Páginas ${currentIndex}-${currentIndex + 1}`;
-  };
+    
+    return `Páginas ${currentIndex}-${currentIndex + 1} de ${totalPages}`;
+};
+
+  const showSinglePage = isMobile || currentIndex === 0 || (totalPages % 2 === 0 && currentIndex >= totalPages - 1);
 
 
   return (
     <div className="w-full max-w-5xl mx-auto my-6">
       <div className="relative group p-4 bg-muted/30 rounded-lg shadow-inner">
-        <div className={cn("flex justify-center items-center min-h-[400px] md:min-h-[550px] aspect-[1/1] md:aspect-[2/1.4]")}>
+        <div className={cn("flex justify-center items-center min-h-[400px] md:min-h-[550px] aspect-[1/1.4] md:aspect-[2/1.4]")}>
           
-          {/* DESKTOP VIEW - SPREAD */}
-          <div className="w-full h-full hidden md:flex justify-center items-center relative gap-2">
-            {currentIndex === 0 && ( // Cover page
-              <div className="w-1/2 h-full flex justify-end items-center">
-                 <Image src={pages[0]} alt={`Portada de ${languageName}`} width={800} height={1100} className="w-auto h-full max-h-[550px] object-contain shadow-lg rounded-md" data-ai-hint="brochure cover" priority />
+          <div className="w-full h-full flex justify-center items-center relative">
+            {showSinglePage ? (
+              // Single Page View (Mobile, Cover, unpaired last page)
+              <div className="w-full h-full flex justify-center items-center">
+                  <Image 
+                      src={pages[currentIndex]} 
+                      alt={`Página ${currentIndex + 1} de ${languageName}`} 
+                      width={800} height={1100} 
+                      className="w-auto h-full max-h-[550px] object-contain shadow-lg rounded-md" 
+                      data-ai-hint="brochure page" 
+                      priority={currentIndex === 0}
+                  />
+              </div>
+            ) : (
+              // Double Page View (Desktop)
+              <div className="w-full h-full hidden md:flex justify-center items-center relative gap-2">
+                <Image 
+                    src={pages[currentIndex]} 
+                    alt={`Página ${currentIndex + 1} de ${languageName}`} 
+                    width={800} height={1100} 
+                    className="w-auto h-full max-h-[550px] object-contain shadow-lg rounded-l-md" 
+                    data-ai-hint="brochure page left" 
+                />
+                {currentIndex + 1 < totalPages && (
+                    <Image 
+                        src={pages[currentIndex + 1]} 
+                        alt={`Página ${currentIndex + 2} de ${languageName}`} 
+                        width={800} height={1100} 
+                        className="w-auto h-full max-h-[550px] object-contain shadow-lg rounded-r-md" 
+                        data-ai-hint="brochure page right" 
+                    />
+                )}
               </div>
             )}
-            {currentIndex > 0 && ( // Spread pages
-              <>
-                <div className="w-1/2 h-full flex justify-end items-center">
-                  <Image src={pages[currentIndex - 1]} alt={`Página ${currentIndex} de ${languageName}`} width={800} height={1100} className="w-auto h-full max-h-[550px] object-contain shadow-lg rounded-l-md" data-ai-hint="brochure page left" />
-                </div>
-                <div className="w-1/2 h-full flex justify-start items-center">
-                  {currentIndex < totalPages && (
-                    <Image src={pages[currentIndex]} alt={`Página ${currentIndex + 1} de ${languageName}`} width={800} height={1100} className="w-auto h-full max-h-[550px] object-contain shadow-lg rounded-r-md" data-ai-hint="brochure page right" />
-                  )}
-                </div>
-              </>
-            )}
           </div>
-          
-          {/* MOBILE VIEW - SINGLE PAGE */}
-          <div className="w-full h-full flex md:hidden justify-center items-center relative">
-             <Image src={pages[currentIndex]} alt={`Página ${currentIndex + 1} de ${languageName}`} width={800} height={1100} className="w-auto h-full max-h-[550px] object-contain shadow-lg rounded-md" data-ai-hint="brochure page mobile" priority={currentIndex === 0} />
-          </div>
-
         </div>
 
         {/* Navigation Buttons */}
@@ -113,7 +120,7 @@ export default function ImageBrochureViewer({ pages, languageName }: ImageBrochu
         
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button onClick={goToNextPage} variant="outline" size="icon" className="absolute top-1/2 right-[-1rem] transform -translate-y-1/2 z-20 p-2 bg-background/70 hover:bg-background/90 text-foreground rounded-full h-12 w-12" aria-label="Siguiente página" disabled={currentIndex >= totalPages - 1}>
+            <Button onClick={goToNextPage} variant="outline" size="icon" className="absolute top-1/2 right-[-1rem] transform -translate-y-1/2 z-20 p-2 bg-background/70 hover:bg-background/90 text-foreground rounded-full h-12 w-12" aria-label="Siguiente página" disabled={currentIndex >= totalPages - (isMobile ? 1 : 2)}>
               <ChevronRight size={28} />
             </Button>
           </TooltipTrigger>
@@ -126,6 +133,7 @@ export default function ImageBrochureViewer({ pages, languageName }: ImageBrochu
                      <ImageLightbox 
                         pages={pages}
                         initialIndex={currentIndex}
+                        languageName={languageName}
                         trigger={
                             <Button variant="outline" size="icon" className="h-12 w-12 bg-background/70 hover:bg-background/90 text-foreground" aria-label="Ampliar brochure">
                                 <Expand size={24}/>
@@ -142,7 +150,6 @@ export default function ImageBrochureViewer({ pages, languageName }: ImageBrochu
         <div className="p-2 bg-card/80 backdrop-blur-sm rounded-lg shadow-md border max-w-xs mx-auto text-center">
             <span className="text-sm font-medium text-foreground">
                 {getPageLabel()}
-                <span className="text-muted-foreground"> / {totalPages}</span> 
             </span>
         </div>
        </div>

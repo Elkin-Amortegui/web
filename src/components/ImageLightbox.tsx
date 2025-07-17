@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -13,27 +12,30 @@ interface ImageLightboxProps {
   pages: string[];
   initialIndex?: number;
   trigger: React.ReactElement;
+  languageName: string;
 }
 
 export default function ImageLightbox({ 
   pages,
   initialIndex = 0,
-  trigger
+  trigger,
+  languageName
 }: ImageLightboxProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(1);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
-  const [currentIndex, setCurrentIndex] = useState(initialIndex);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const isMobile = useIsMobile();
 
   useEffect(() => {
     if (isOpen) {
+      // Start at page 1 (index 0) for single page view, or page 2 (index 1) for double page view.
       setCurrentIndex(initialIndex);
       handleResetZoom();
     }
-  }, [isOpen, initialIndex]);
+  }, [isOpen, initialIndex, isMobile]);
 
   const handleZoomIn = () => setZoomLevel(prev => Math.min(prev * 1.2, 5));
   const handleZoomOut = () => setZoomLevel(prev => Math.max(prev / 1.2, 1));
@@ -66,51 +68,19 @@ export default function ImageLightbox({
   const goToNextPage = (e: React.MouseEvent) => {
     e.stopPropagation();
     handleResetZoom();
-    if (isMobile) {
-      setCurrentIndex((prev) => Math.min(prev + 1, totalPages - 1));
-    } else {
-      if (currentIndex === 0) { // From cover to first spread
-        setCurrentIndex(1);
-      } else {
-        setCurrentIndex((prev) => Math.min(prev + 2, totalPages - 1));
-      }
-    }
+    setCurrentIndex((prev) => Math.min(prev + 2, totalPages - 2));
   };
 
   const goToPreviousPage = (e: React.MouseEvent) => {
     e.stopPropagation();
     handleResetZoom();
-    if (isMobile) {
-      setCurrentIndex((prev) => Math.max(0, prev - 1));
-    } else {
-      if (currentIndex === 1) { // From first spread back to cover
-        setCurrentIndex(0);
-      } else {
-        setCurrentIndex((prev) => Math.max(0, prev - 2));
-      }
-    }
+    setCurrentIndex((prev) => Math.max(0, prev - 2));
   };
-
-  const isLastPageSingle = totalPages % 2 === 0;
-
-  const getPageLabel = () => {
-    if (totalPages === 1) return "Página 1";
-    if (isMobile) return `Página ${currentIndex + 1}`;
-    
-    // Desktop
-    if (currentIndex === 0) return "Portada";
-    if (!isLastPageSingle && currentIndex === totalPages - 1) return `Página ${totalPages}`;
-    
-    const startPage = currentIndex;
-    const endPage = currentIndex + 1;
-    return `Páginas ${startPage}-${endPage}`;
-  };
-
-  const isCover = currentIndex === 0;
-  const isFinalPageAndOdd = !isLastPageSingle && currentIndex === totalPages - 1;
-
-  const showSinglePageInLightbox = isMobile || isCover || (isFinalPageAndOdd && !isMobile);
   
+  const getPageLabel = () => {
+    return `Páginas ${currentIndex + 1}-${currentIndex + 2} de ${totalPages}`;
+  };
+
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild onClick={() => setIsOpen(true)}>
@@ -122,7 +92,7 @@ export default function ImageLightbox({
         onInteractOutside={(e) => { e.preventDefault(); handleClose(); }}
         onMouseUp={handleMouseUp}
       >
-        <DialogTitle className="sr-only">{`Visor de brochure ampliado`}</DialogTitle>
+        <DialogTitle className="sr-only">{`Visor de brochure ampliado: ${languageName}`}</DialogTitle>
         <div className="absolute top-2 right-2 z-20 flex gap-2">
           <Button variant="outline" size="icon" onClick={handleZoomIn} aria-label="Acercar"><ZoomIn className="h-5 w-5" /></Button>
           <Button variant="outline" size="icon" onClick={handleZoomOut} aria-label="Alejar" disabled={zoomLevel <= 1}><ZoomOut className="h-5 w-5" /></Button>
@@ -139,7 +109,7 @@ export default function ImageLightbox({
             <Button variant="outline" size="icon" onClick={goToPreviousPage} disabled={currentIndex === 0} className="absolute left-2 top-1/2 -translate-y-1/2 z-20 rounded-full h-12 w-12">
               <ChevronLeft className="h-6 w-6"/>
             </Button>
-            <Button variant="outline" size="icon" onClick={goToNextPage} disabled={currentIndex >= totalPages -1} className="absolute right-2 top-1/2 -translate-y-1/2 z-20 rounded-full h-12 w-12">
+            <Button variant="outline" size="icon" onClick={goToNextPage} disabled={currentIndex >= totalPages - 2} className="absolute right-2 top-1/2 -translate-y-1/2 z-20 rounded-full h-12 w-12">
               <ChevronRight className="h-6 w-6"/>
             </Button>
           </>
@@ -158,45 +128,30 @@ export default function ImageLightbox({
               cursor: isDragging && zoomLevel > 1 ? 'grabbing' : (zoomLevel > 1 ? 'grab' : 'default'),
             }}
           >
-            {showSinglePageInLightbox ? (
-              <div className="flex justify-center items-center max-w-[90vw] max-h-[90vh]">
-                 <Image 
-                  src={pages[currentIndex]} 
-                  alt={`Página ${currentIndex + 1}`} 
-                  width={800} height={1100} 
-                  className="object-contain shadow-lg max-w-full max-h-full w-auto h-auto md:max-w-[45vw]"
-                 />
-              </div>
-            ) : (
-              <div className="flex justify-center items-center gap-2 max-w-[90vw] max-h-[90vh]">
-                  <Image 
+            <div className="grid grid-cols-2 gap-2 justify-center items-center max-w-[90vw]">
+                <Image 
                     src={pages[currentIndex]} 
                     alt={`Página ${currentIndex + 1}`} 
-                    width={800} 
-                    height={1100} 
-                    className="object-contain shadow-lg max-w-[45vw] max-h-[90vh] w-auto h-auto"
-                   />
-                  {currentIndex + 1 < totalPages && (
+                    width={800} height={1100} 
+                    className="object-contain shadow-lg w-auto h-auto max-w-full max-h-[90vh]"
+                />
+                {currentIndex + 1 < totalPages && (
                     <Image 
-                      src={pages[currentIndex + 1]} 
-                      alt={`Página ${currentIndex + 2}`} 
-                      width={800} 
-                      height={1100} 
-                      className="object-contain shadow-lg max-w-[45vw] max-h-[90vh] w-auto h-auto" 
+                        src={pages[currentIndex + 1]} 
+                        alt={`Página ${currentIndex + 2}`} 
+                        width={800} height={1100} 
+                        className="object-contain shadow-lg w-auto h-auto max-w-full max-h-[90vh]"
                     />
-                  )}
-              </div>
-            )}
+                )}
+            </div>
           </div>
         </div>
-
-        {totalPages > 1 && (
-            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-20 bg-background/80 px-3 py-1 rounded-full text-sm">
-                {/* Simplified label */}
-            </div>
-        )}
+        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-20 p-2 bg-card/80 backdrop-blur-sm rounded-lg shadow-md border max-w-xs mx-auto text-center">
+            <span className="text-sm font-medium text-foreground">
+                {getPageLabel()}
+            </span>
+        </div>
       </DialogContent>
     </Dialog>
   );
 }
-
