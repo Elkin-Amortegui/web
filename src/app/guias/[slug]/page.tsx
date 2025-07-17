@@ -54,7 +54,7 @@ export default async function GuideDetailPage({ params }: { params: { slug: stri
               <CalendarDays className="mr-2 h-4 w-4" />
               <span>Publicado: {formatDate(guide.date)}</span>
             </div>
-            {guide.targetAudience && guide.targetAudience.length > 0 && (
+            {Array.isArray(guide.targetAudience) && guide.targetAudience.length > 0 && (
               <div className="flex items-center">
                 <Users className="mr-2 h-4 w-4" />
                 <span>Dirigido a: {guide.targetAudience.join(', ')}</span>
