@@ -29,8 +29,8 @@ const modalityHighlights = [
 ];
 
 const heroImages = [
-  { src: 'https://placehold.co/1920x700/00723F/FFFFFF?text=Centro+de+Idiomas', alt: 'Centro de Idiomas UNILLANOS', aiHint: 'university building languages', title: 'Transforma tu futuro aprendiendo idiomas', description: 'En el Centro de Idiomas de la Universidad de los Llanos te ofrecemos programas de alta calidad para alcanzar tus metas personales y profesionales.' },
-  { src: 'https://placehold.co/1920x700/FFD100/333333?text=Estudiantes+Felices', alt: 'Estudiantes aprendiendo en UNILLANOS', aiHint: 'students classroom learning', title: 'Nuevas Culturas, Nuevas Oportunidades', description: 'Domina un nuevo idioma y expande tus horizontes académicos y laborales con nuestros expertos.' },
+  { src: 'https://placehold.co/1920x700/00723F/FFFFFF?text=Centro+de+Idiomas', alt: 'Centro de Idiomas Universidad de los Llanos', aiHint: 'university building languages', title: 'Transforma tu futuro aprendiendo idiomas', description: 'En el Centro de Idiomas de la Universidad de los Llanos te ofrecemos programas de alta calidad para alcanzar tus metas personales y profesionales.' },
+  { src: 'https://placehold.co/1920x700/FFD100/333333?text=Estudiantes+Felices', alt: 'Estudiantes aprendiendo en Universidad de los Llanos', aiHint: 'students classroom learning', title: 'Nuevas Culturas, Nuevas Oportunidades', description: 'Domina un nuevo idioma y expande tus horizontes académicos y laborales con nuestros expertos.' },
   { src: 'https://placehold.co/1920x700/005DAA/FFFFFF?text=Conexión+Global', alt: 'Conexión Global a través de los Idiomas', aiHint: 'global culture travel', title: 'Comunícate con el Mundo', description: 'Aprende inglés, francés, alemán o portugués y conéctate con personas de todo el planeta.' },
 ];
 
