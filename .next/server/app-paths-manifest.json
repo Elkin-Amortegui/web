@@ -1,4 +1,7 @@
 {
+  "/normativa/page": "app/normativa/page.js",
+  "/oferta-academica/ingles/page": "app/oferta-academica/ingles/page.js",
+  "/oferta-academica/page": "app/oferta-academica/page.js",
   "/page": "app/page.js",
   "/preguntas-frecuentes/page": "app/preguntas-frecuentes/page.js"
 }

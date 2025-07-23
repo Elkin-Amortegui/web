@@ -35,28 +35,28 @@ export const languages: Omit<Language, 'description' | 'levels' | 'modalities' |
     name: 'Inglés', 
     slug: 'ingles',
     shortDescription: 'El idioma global para nuevas oportunidades.',
-    image: '/images/oferta-academica/ingles/ingles.png',
+    image: 'https://placehold.co/400x250/00723F/FFFFFF?text=Inglés+UNILLANOS',
     aiHint: 'english language learning',
   },
   { 
     name: 'Francés', 
     slug: 'frances',
     shortDescription: 'Sumérgete en una cultura rica y diversa.',
-    image: '/images/oferta-academica/frances/frances.png',
+    image: 'https://placehold.co/400x250/FFD100/333333?text=Francés+UNILLANOS',
     aiHint: 'french language eiffel',
   },
   { 
     name: 'Alemán', 
     slug: 'aleman',
     shortDescription: 'Abre puertas en ciencia y tecnología.',
-    image: '/images/oferta-academica/aleman/aleman.png',
+    image: 'https://placehold.co/400x250/005DAA/FFFFFF?text=Alemán+UNILLANOS',
     aiHint: 'german language berlin',
   },
   { 
     name: 'Portugués', 
     slug: 'portugues',
     shortDescription: 'Conecta con vibrantes culturas latinas.',
-    image: '/images/oferta-academica/portugues/portugues.png',
+    image: 'https://placehold.co/400x250/4CAF50/FFFFFF?text=Portugués+UNILLANOS',
     aiHint: 'portuguese language rio',
   },
 ];
@@ -123,9 +123,7 @@ export const englishPrograms: EnglishProgram[] = [
     image: 'https://placehold.co/800x450/f87171/ffffff?text=Inglés+5-6+años',
     aiHint: 'children playing learning',
     pdfUrl: '#', // Placeholder
-    brochureImagePages: ['/images/oferta-academica/ingles/brochure/5-6/5-6-page-0001.jpg','/images/oferta-academica/ingles/brochure/5-6/5-6-page-0002.jpg','/images/oferta-academica/ingles/brochure/5-6/5-6-page-0003.jpg','/images/oferta-academica/ingles/brochure/5-6/5-6-page-0004.jpg','/images/oferta-academica/ingles/brochure/5-6/5-6-page-0005.jpg',
-      '/images/oferta-academica/ingles/brochure/5-6/5-6-page-0006.jpg','/images/oferta-academica/ingles/brochure/5-6/5-6-page-0007.jpg','/images/oferta-academica/ingles/brochure/5-6/5-6-page-0008.jpg','/images/oferta-academica/ingles/brochure/5-6/5-6-page-0009.jpg','/images/oferta-academica/ingles/brochure/5-6/5-6-page-0010.jpg','/images/oferta-academica/ingles/brochure/5-6/5-6-page-0011.jpg',
-      '/images/oferta-academica/ingles/brochure/5-6/5-6-page-0012.jpg','/images/oferta-academica/ingles/brochure/5-6/5-6-page-0013.jpg','/images/oferta-academica/ingles/brochure/5-6/5-6-page-0014.jpg','/images/oferta-academica/ingles/brochure/5-6/5-6-page-0015.jpg','/images/oferta-academica/ingles/brochure/5-6/5-6-page-0016.jpg','/images/oferta-academica/ingles/brochure/5-6/5-6-page-0017.jpg','/images/oferta-academica/ingles/brochure/5-6/5-6-page-0018.jpg',]
+    brochureImagePages: ['https://placehold.co/800x1100/f87171/ffffff?text=Brochure+5-6+años']
   },
   {
     name: 'Inglés para niños de 7 y 8 años',
@@ -177,5 +175,17 @@ export const englishPrograms: EnglishProgram[] = [
       'https://placehold.co/800x1100/60a5fa/ffffff?text=Brochure+15%2B+Página+1',
       'https://placehold.co/800x1100/60a5fa/ffffff?text=Brochure+15%2B+Página+2',
     ]
+  },
+  {
+    name: 'Programa por Habilidades',
+    slug: 'programa-habilidades',
+    ageRange: 'Habilidades',
+    description: 'Perfecciona tus competencias específicas en inglés. Ideal para quienes han culminado niveles B2 o C1 y buscan maestría.',
+    levels: 'Avanzado (Post-B2/C1)',
+    modalities: 'Presencial, Virtual',
+    image: 'https://placehold.co/800x450/c084fc/ffffff?text=Habilidades+Avanzadas',
+    aiHint: 'advanced skills workshop',
+    pdfUrl: '#', // Placeholder
+    brochureImagePages: ['https://placehold.co/800x1100/c084fc/ffffff?text=Brochure+Habilidades']
   }
 ];
