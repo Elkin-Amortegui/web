@@ -2,7 +2,8 @@
 import { englishPrograms } from '@/app/oferta-academica/LanguageData';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { ArrowLeft, BookOpen } from 'lucide-react';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { ArrowLeft, BookOpen, Award } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import ImageBrochureViewer from '@/components/ImageBrochureViewer'; 
@@ -18,6 +19,13 @@ export async function generateStaticParams() {
   }));
 }
 
+const slugsWithCelacLogo = [
+    'kids-7-8',
+    'kids-9-10',
+    'teens-11-14',
+    'adults-15-plus',
+];
+
 export default async function EnglishProgramDetailPage({ params }: { params: { ageSlug: string } }) {
   const program = await getProgramData(params.ageSlug);
 
@@ -25,31 +33,75 @@ export default async function EnglishProgramDetailPage({ params }: { params: { a
     notFound();
   }
 
+  const showCelacLogo = slugsWithCelacLogo.includes(params.ageSlug);
+  const celacPdfPath = "/docs/resoluciones-celac.pdf"; // Asegúrate de que este archivo exista en /public/docs/
+
   return (
     <div className="container mx-auto px-4 md:px-6 py-12 md:py-16 bg-muted/20 min-h-[calc(100vh-10rem)]">
       <header className="mb-8">
         <Button variant="outline" asChild className="mb-6">
           <Link href="/oferta-academica/ingles"><ArrowLeft className="mr-2 h-4 w-4" />Volver a Programas de Inglés</Link>
         </Button>
-        <div className="flex flex-col md:flex-row items-center gap-6 mb-6">
-            {program.image && (
-                 <Image 
-                    src={program.image} 
-                    alt={`Curso de ${program.name}`} 
-                    width={150} 
-                    height={100} 
-                    className="rounded-lg shadow-md object-cover md:w-48 md:h-32"
-                    data-ai-hint={program.aiHint || 'language course icon'}
-                />
-            )}
-            <div>
-                <h1 className="font-headline text-4xl md:text-5xl font-bold text-primary">{program.name}</h1>
-                <p className="text-lg text-foreground/80 mt-1 max-w-2xl">{program.description}</p>
+        <div className="grid md:grid-cols-3 gap-8 items-center">
+            <div className="md:col-span-2 flex flex-col md:flex-row items-center gap-6">
+                {program.image && (
+                     <Image 
+                        src={program.image} 
+                        alt={`Curso de ${program.name}`} 
+                        width={150} 
+                        height={100} 
+                        className="rounded-lg shadow-md object-cover md:w-48 md:h-32 shrink-0"
+                        data-ai-hint={program.aiHint || 'language course icon'}
+                    />
+                )}
+                <div>
+                    <h1 className="font-headline text-4xl md:text-5xl font-bold text-primary">{program.name}</h1>
+                    <p className="text-lg text-foreground/80 mt-1 max-w-2xl">{program.description}</p>
+                </div>
             </div>
+            
+            {showCelacLogo && (
+              <div className="md:col-span-1">
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Card className="shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border-accent/30 hover:border-accent group bg-accent/5">
+                        <CardHeader className="text-center p-4">
+                            <CardTitle className="text-base text-accent flex items-center justify-center gap-2">
+                                <Award className="h-5 w-5"/>
+                                Certificación CELAC
+                            </CardTitle>
+                        </CardHeader>
+                        <CardContent className="p-4 pt-0 flex flex-col items-center">
+                           <Image 
+                                src="/images/logos/celac-logo.png" 
+                                alt="Logo CELAC"
+                                width={120}
+                                height={120}
+                                className="object-contain transition-transform group-hover:scale-105"
+                                data-ai-hint="celac certification logo"
+                            />
+                            <p className="text-xs text-muted-foreground mt-2 text-center">Haz clic para ver la resolución</p>
+                        </CardContent>
+                    </Card>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-4xl w-[90vw] h-[90vh] p-2 flex flex-col">
+                     <div className="flex-grow w-full h-full">
+                        <iframe
+                            src={celacPdfPath}
+                            title="Resolución CELAC"
+                            width="100%"
+                            height="100%"
+                            style={{ border: 'none' }}
+                        />
+                     </div>
+                  </DialogContent>
+                </Dialog>
+              </div>
+            )}
         </div>
       </header>
 
-      <Card className="shadow-xl border-primary/20 border bg-card overflow-hidden">
+      <Card className="shadow-xl border-primary/20 border bg-card overflow-hidden mt-8">
         <CardHeader className="bg-primary/5 border-b border-primary/20">
           <CardTitle className="text-2xl text-primary flex items-center">
             <BookOpen className="mr-3 h-7 w-7" />

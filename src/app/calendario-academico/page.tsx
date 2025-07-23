@@ -5,7 +5,7 @@ import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { CalendarClock, Search, Info } from 'lucide-react';
 
 export default function CalendarioAcademicoPage() {
-  const pdfPath = "/docs/resolucion-academica-096-2024.pdf";
+  const pdfPath = "/docs/calendario-academico/resolucion-academica-096-2024.pdf";
 
   return (
     <div className="container mx-auto px-4 md:px-6 py-12 md:py-16">

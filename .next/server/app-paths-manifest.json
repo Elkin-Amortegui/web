@@ -1,7 +1,11 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
+  "/calendario-academico/page": "app/calendario-academico/page.js",
   "/normativa/page": "app/normativa/page.js",
+  "/oferta-academica/ingles/[ageSlug]/page": "app/oferta-academica/ingles/[ageSlug]/page.js",
   "/oferta-academica/ingles/page": "app/oferta-academica/ingles/page.js",
   "/oferta-academica/page": "app/oferta-academica/page.js",
   "/page": "app/page.js",
-  "/preguntas-frecuentes/page": "app/preguntas-frecuentes/page.js"
+  "/preguntas-frecuentes/page": "app/preguntas-frecuentes/page.js",
+  "/proceso-inscripcion/page": "app/proceso-inscripcion/page.js"
 }
