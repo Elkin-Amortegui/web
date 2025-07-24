@@ -53,7 +53,6 @@ const mainNavItems: NavItem[] = [
     items: [
       { title: 'Oferta Académica', href: '/oferta-academica', description: 'Cursos de idiomas disponibles.', icon: BookOpenCheck },
       { title: 'Pruebas Internacionales', href: '/oferta-academica/pruebas-internacionales', description: 'Prepárate para exámenes globales.', icon: Award },
-      { title: 'Valores y Tarifas', href: '/valores', description: 'Consulta costos de programas.', icon: DollarSign },
     ],
   },
   {
@@ -81,6 +80,7 @@ const mainNavItems: NavItem[] = [
       { title: 'Cómo llegar', href: '/como-llegar', description: 'Encuentra nuestra ubicación.', icon: MapPin },
     ],
   },
+  { title: 'Tarifas', href: '/valores' },
 ];
 
 const topBarSocials = [

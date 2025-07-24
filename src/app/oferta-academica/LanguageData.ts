@@ -69,9 +69,8 @@ export const languageDetails: Record<string, Language> = {
     description: 'Sumérgete en una cultura rica y expande tus horizontes literarios, artísticos y diplomáticos. El francés es un idioma oficial en muchas organizaciones internacionales.', 
     levels: 'A1, A2, B1, B2', 
     modalities: 'Presencial, Semi-intensivo',
-    image: 'https://placehold.co/400x250/FFD100/333333?text=Francés+UNILLANOS',
+    image: '/images/oferta-academica/frances/frances.png',
     aiHint: 'french language eiffel',
-    pdfUrl: 'https://www.unillanos.edu.co/images/documentos/dependencias/CEI/INSTRUCTIVO_FRANCES_2024-1.pdf',
     brochureImagePages: [
       '/images/oferta-academica/frances/brochure/1.png',
       '/images/oferta-academica/frances/brochure/2.png',
@@ -86,9 +85,8 @@ export const languageDetails: Record<string, Language> = {
     description: 'Abre puertas en ciencia, tecnología, ingeniería, filosofía y negocios en Europa. Alemania es una potencia económica y académica.', 
     levels: 'A1, A2, B1', 
     modalities: 'Presencial',
-    image: 'https://placehold.co/400x250/005DAA/FFFFFF?text=Alemán+UNILLANOS',
+    image: '/images/oferta-academica/aleman/aleman.png',
     aiHint: 'german language berlin',
-    pdfUrl: 'https://www.unillanos.edu.co/images/documentos/dependencias/CEI/INSTRUCTIVO_ALEMAN_2024-1.pdf',
     brochureImagePages: [
       '/images/oferta-academica/aleman/brochure/1.png',
       '/images/oferta-academica/aleman/brochure/2.png',
@@ -103,9 +101,8 @@ export const languageDetails: Record<string, Language> = {
     description: 'Conecta con vibrantes culturas de América Latina, Europa y África. El portugués es un idioma en crecimiento con importancia en el Mercosur.', 
     levels: 'A1, A2, B1', 
     modalities: 'Presencial, Virtual',
-    image: 'https://placehold.co/400x250/4CAF50/FFFFFF?text=Portugués+UNILLANOS',
+    image: '/images/oferta-academica/portugues/portugues.png',
     aiHint: 'portuguese language rio',
-    pdfUrl: 'https://www.unillanos.edu.co/images/documentos/dependencias/CEI/INSTRUCTIVO_PORTUGUES_2024-1.pdf',
     brochureImagePages: [
       '/images/oferta-academica/portugues/brochure/1.png',
       '/images/oferta-academica/portugues/brochure/2.png',
@@ -140,7 +137,7 @@ export const englishPrograms: EnglishProgram[] = [
     description: 'Programa lúdico para el primer contacto con el inglés, enfocado en juegos, canciones y actividades interactivas.',
     levels: 'Inicial',
     modalities: 'Presencial',
-    image: 'https://placehold.co/800x450/f87171/ffffff?text=Inglés+5-6+años',
+    image: '/images/oferta-academica/ingles/ingles.png',
     aiHint: 'children playing learning',
     pdfUrl: '#', // Placeholder
     brochureImagePages: [
@@ -158,7 +155,7 @@ export const englishPrograms: EnglishProgram[] = [
     description: 'Desarrollo de habilidades comunicativas básicas a través de historias, proyectos y actividades dinámicas.',
     levels: 'Básico 1',
     modalities: 'Presencial',
-    image: 'https://placehold.co/800x450/fb923c/ffffff?text=Inglés+7-8+años',
+    image: '/images/oferta-academica/ingles/ingles.png',
     aiHint: 'children classroom drawing',
     pdfUrl: '#', // Placeholder
     brochureImagePages: [
@@ -176,7 +173,7 @@ export const englishPrograms: EnglishProgram[] = [
     description: 'Ampliación de vocabulario y estructuras gramaticales con enfoque en la conversación y la comprensión lectora.',
     levels: 'Básico 2 y 3',
     modalities: 'Presencial',
-    image: 'https://placehold.co/800x450/fbbf24/ffffff?text=Inglés+9-10+años',
+    image: '/images/oferta-academica/ingles/ingles.png',
     aiHint: 'pre-teens studying group',
     pdfUrl: '#', // Placeholder
     brochureImagePages: [
@@ -199,7 +196,7 @@ export const englishPrograms: EnglishProgram[] = [
     description: 'Fortalecimiento de las cuatro habilidades del idioma (habla, escucha, lectura, escritura) con temas de interés juvenil.',
     levels: 'Intermedio',
     modalities: 'Presencial',
-    image: 'https://placehold.co/800x450/a3e635/ffffff?text=Inglés+11-14+años',
+    image: '/images/oferta-academica/ingles/ingles.png',
     aiHint: 'teenagers studying computer',
     pdfUrl: '#', // Placeholder
     brochureImagePages: [
@@ -222,9 +219,9 @@ export const englishPrograms: EnglishProgram[] = [
     description: 'Programa completo para jóvenes y adultos, alineado con el MCER, para el dominio del inglés en contextos académicos y profesionales.',
     levels: 'A1, A2, B1, B2, C1',
     modalities: 'Presencial, Virtual, Intensivo',
-    image: 'https://placehold.co/800x450/60a5fa/ffffff?text=Inglés+15%2B+años',
+    image: '/images/oferta-academica/ingles/ingles.png',
     aiHint: 'university students conversation',
-    pdfUrl: 'https://www.unillanos.edu.co/images/documentos/dependencias/CEI/INSTRUCTIVO_INGLES_2024-1.pdf',
+    pdfUrl: '#',
     brochureImagePages: [
       '/images/oferta-academica/ingles/brochure/15+/1.png',
       '/images/oferta-academica/ingles/brochure/15+/2.png',
@@ -242,7 +239,7 @@ export const englishPrograms: EnglishProgram[] = [
     description: 'Perfecciona tus competencias específicas en inglés. Ideal para quienes han culminado niveles B2 o C1 y buscan maestría.',
     levels: 'Avanzado (Post-B2/C1)',
     modalities: 'Presencial, Virtual',
-    image: 'https://placehold.co/800x450/c084fc/ffffff?text=Habilidades+Avanzadas',
+    image: '/images/oferta-academica/ingles/ingles.png',
     aiHint: 'advanced skills workshop',
     pdfUrl: '#', // Placeholder
     brochureImagePages: [

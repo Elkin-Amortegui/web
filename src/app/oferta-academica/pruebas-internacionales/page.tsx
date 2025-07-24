@@ -58,7 +58,7 @@ export default async function PruebasInternacionalesPage() {
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <Button asChild size="lg">
-            <Link href="/inscripciones">Ver Fechas de Talleres</Link>
+          <Link href="/proceso-inscripcion">Ver Proceso de Inscripción</Link>
           </Button>
           <Button asChild variant="outline" size="lg">
             <Link href="/contacto">Contactar Ahora</Link>

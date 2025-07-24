@@ -34,7 +34,7 @@ export default async function EnglishProgramDetailPage({ params }: { params: { a
   }
 
   const showCelacLogo = slugsWithCelacLogo.includes(params.ageSlug);
-  const celacPdfPath = "/docs/resoluciones-celac.pdf"; // Asegúrate de que este archivo exista en /public/docs/
+  const celacPdfPath = "/docs/normativa/resoluciones-celac.pdf"; // Asegúrate de que este archivo exista en /public/docs/
 
   return (
     <div className="container mx-auto px-4 md:px-6 py-12 md:py-16 bg-muted/20 min-h-[calc(100vh-10rem)]">
@@ -73,7 +73,7 @@ export default async function EnglishProgramDetailPage({ params }: { params: { a
                         </CardHeader>
                         <CardContent className="p-4 pt-0 flex flex-col items-center">
                            <Image 
-                                src="/images/logos/celac-logo.png" 
+                                src="/images/logos/logo-celac.png" 
                                 alt="Logo CELAC"
                                 width={120}
                                 height={120}
@@ -129,7 +129,7 @@ export default async function EnglishProgramDetailPage({ params }: { params: { a
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <Button asChild size="lg">
-            <Link href="/inscripciones">Ver Proceso de Inscripción</Link>
+          <Link href="/proceso-inscripcion">Ver Proceso de Inscripción</Link>
           </Button>
           <Button asChild variant="outline" size="lg">
             <Link href="/contacto">Contactar Ahora</Link>

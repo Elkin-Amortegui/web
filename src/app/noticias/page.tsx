@@ -65,10 +65,10 @@ export default function NewsPage() {
       <header className="text-center mb-12 md:mb-16">
         <Newspaper className="mx-auto h-16 w-16 text-primary mb-4" />
         <h1 className="font-headline text-4xl md:text-5xl font-bold text-primary mb-4">
-          Noticias y Eventos
+          Noticias
         </h1>
         <p className="text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto">
-          Mantente informado sobre las últimas actividades, convocatorias y logros del Centro de Idiomas UNILLANOS.
+          Mantente informado sobre las últimas convocatorias y logros del Centro de Idiomas UNILLANOS.
         </p>
       </header>
 

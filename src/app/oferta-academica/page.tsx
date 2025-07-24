@@ -69,7 +69,7 @@ export default function AcademicOfferPage() {
             <div className="relative z-10 w-full">
                 <Award className="mx-auto h-12 w-12 mb-2 opacity-80 group-hover:opacity-100 transition-opacity" />
                 <h3 className="font-headline text-2xl font-bold text-white">{internationalTestsData.name}</h3>
-                <p className="text-sm opacity-90 mx-auto">Prepárate para certificar tu nivel de inglés con los exámenes más reconocidos a nivel mundial.</p>
+                <p className="max-w-none text-sm opacity-90 mx-auto">Prepárate para certificar tu nivel de inglés con los exámenes más reconocidos a nivel mundial.</p>
             </div>
         </Link>
       </div>
@@ -77,7 +77,7 @@ export default function AcademicOfferPage() {
       <div className="text-center mt-16">
         <p className="text-lg text-foreground/80 mb-4">¿Listo para empezar tu viaje de aprendizaje?</p>
         <Button asChild size="lg">
-          <Link href="/inscripciones">Consulta el Proceso de Inscripción</Link>
+        <Link href="/proceso-inscripcion">Consulta el Proceso de Inscripción</Link>
         </Button>
       </div>
     </div>
