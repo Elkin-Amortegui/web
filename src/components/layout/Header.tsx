@@ -27,7 +27,7 @@ import {
 import { 
   Menu, Search, X, Facebook, Youtube, MessageCircle, ChevronDown, UserCircle, ExternalLink, LibraryBig,
   BookOpenCheck, DollarSign, CalendarHeart, Newspaper, ClipboardList, Gavel, Users, Mail, MapPin,
-  HelpCircle, UserPlus
+  HelpCircle, UserPlus, Award
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
@@ -52,6 +52,7 @@ const mainNavItems: NavItem[] = [
     title: 'Académico',
     items: [
       { title: 'Oferta Académica', href: '/oferta-academica', description: 'Cursos de idiomas disponibles.', icon: BookOpenCheck },
+      { title: 'Pruebas Internacionales', href: '/oferta-academica/pruebas-internacionales', description: 'Prepárate para exámenes globales.', icon: Award },
       { title: 'Valores y Tarifas', href: '/valores', description: 'Consulta costos de programas.', icon: DollarSign },
     ],
   },

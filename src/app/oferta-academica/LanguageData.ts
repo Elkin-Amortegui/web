@@ -26,7 +26,6 @@ export interface Language {
   aiHint?: string;
   pdfUrl?: string; // URL to the brochure PDF (for download)
   brochureImagePages?: string[]; // URLs for individual brochure page images
-  // Add other properties like duration, benefits, testimonials later
 }
 
 // Main languages for the offer page
@@ -35,28 +34,28 @@ export const languages: Omit<Language, 'description' | 'levels' | 'modalities' |
     name: 'Inglés', 
     slug: 'ingles',
     shortDescription: 'El idioma global para nuevas oportunidades.',
-    image: 'https://placehold.co/400x250/00723F/FFFFFF?text=Inglés+UNILLANOS',
+    image: '/images/oferta-academica/ingles/ingles.png',
     aiHint: 'english language learning',
   },
   { 
     name: 'Francés', 
     slug: 'frances',
     shortDescription: 'Sumérgete en una cultura rica y diversa.',
-    image: 'https://placehold.co/400x250/FFD100/333333?text=Francés+UNILLANOS',
+    image: '/images/oferta-academica/frances/frances.png',
     aiHint: 'french language eiffel',
   },
   { 
     name: 'Alemán', 
     slug: 'aleman',
     shortDescription: 'Abre puertas en ciencia y tecnología.',
-    image: 'https://placehold.co/400x250/005DAA/FFFFFF?text=Alemán+UNILLANOS',
+    image: '/images/oferta-academica/aleman/aleman.png',
     aiHint: 'german language berlin',
   },
   { 
     name: 'Portugués', 
     slug: 'portugues',
     shortDescription: 'Conecta con vibrantes culturas latinas.',
-    image: 'https://placehold.co/400x250/4CAF50/FFFFFF?text=Portugués+UNILLANOS',
+    image: '/images/oferta-academica/portugues/portugues.png',
     aiHint: 'portuguese language rio',
   },
 ];
@@ -107,6 +106,21 @@ export const languageDetails: Record<string, Language> = {
     pdfUrl: 'https://www.unillanos.edu.co/images/documentos/dependencias/CEI/INSTRUCTIVO_PORTUGUES_2024-1.pdf',
     brochureImagePages: [
       'https://placehold.co/800x1100/4CAF50/FFFFFF?text=Portugués+Página+1',
+    ]
+  },
+  'pruebas-internacionales': {
+    name: 'Pruebas Internacionales',
+    slug: 'pruebas-internacionales',
+    shortDescription: 'Certifica tu nivel de inglés con los exámenes más reconocidos.',
+    description: 'Prepárate con nosotros para alcanzar el éxito en exámenes de certificación internacional como TOEFL, IELTS y otros. Nuestros programas están diseñados para familiarizarte con el formato y las estrategias de cada prueba.',
+    levels: 'N/A',
+    modalities: 'Presencial, Talleres Intensivos',
+    image: '/images/oferta-academica/pruebas-internacionales/pruebas-internacionales.jpg',
+    aiHint: 'international exam certificate',
+    pdfUrl: '#',
+    brochureImagePages: [
+      'https://placehold.co/800x1100/9c27b0/ffffff?text=Brochure+Pruebas+1',
+      'https://placehold.co/800x1100/9c27b0/ffffff?text=Brochure+Pruebas+2',
     ]
   },
 };

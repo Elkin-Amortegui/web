@@ -12,12 +12,13 @@ import { notFound } from 'next/navigation';
 
 async function getLanguageData(slug: string) {
   if (slug === 'ingles') return null; // English is handled elsewhere
-  return languageDetails[slug] || null;
+  const details = languageDetails[slug] || null;
+  return details;
 }
 
 export async function generateStaticParams() {
   // Generate params only for non-English languages
-  return Object.keys(languageDetails).map((slug) => ({
+  return Object.keys(languageDetails).filter(slug => slug !== 'ingles').map((slug) => ({
     languageName: slug,
   }));
 }
@@ -91,3 +92,4 @@ export default async function LanguageDetailPage({ params }: { params: { languag
     </div>
   );
 }
+
