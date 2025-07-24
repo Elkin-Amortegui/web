@@ -73,8 +73,10 @@ export const languageDetails: Record<string, Language> = {
     aiHint: 'french language eiffel',
     pdfUrl: 'https://www.unillanos.edu.co/images/documentos/dependencias/CEI/INSTRUCTIVO_FRANCES_2024-1.pdf',
     brochureImagePages: [
-      'https://placehold.co/800x1100/FFD100/333333?text=Francés+Página+1',
-      'https://placehold.co/800x1100/FFD100/333333?text=Francés+Página+2',
+      '/images/oferta-academica/frances/brochure/1.png',
+      '/images/oferta-academica/frances/brochure/2.png',
+      '/images/oferta-academica/frances/brochure/4.png',
+      '/images/oferta-academica/frances/brochure/3.png'
     ]
   },
   aleman: { 
@@ -88,10 +90,10 @@ export const languageDetails: Record<string, Language> = {
     aiHint: 'german language berlin',
     pdfUrl: 'https://www.unillanos.edu.co/images/documentos/dependencias/CEI/INSTRUCTIVO_ALEMAN_2024-1.pdf',
     brochureImagePages: [
-      'https://placehold.co/800x1100/005DAA/FFFFFF?text=Alemán+Página+1',
-      'https://placehold.co/800x1100/005DAA/FFFFFF?text=Alemán+Página+2',
-      'https://placehold.co/800x1100/005DAA/FFFFFF?text=Alemán+Página+3',
-      'https://placehold.co/800x1100/005DAA/FFFFFF?text=Alemán+Página+4',
+      '/images/oferta-academica/aleman/brochure/1.png',
+      '/images/oferta-academica/aleman/brochure/2.png',
+      '/images/oferta-academica/aleman/brochure/4.png',
+      '/images/oferta-academica/aleman/brochure/3.png'
     ]
   },
   portugues: { 
@@ -105,7 +107,10 @@ export const languageDetails: Record<string, Language> = {
     aiHint: 'portuguese language rio',
     pdfUrl: 'https://www.unillanos.edu.co/images/documentos/dependencias/CEI/INSTRUCTIVO_PORTUGUES_2024-1.pdf',
     brochureImagePages: [
-      'https://placehold.co/800x1100/4CAF50/FFFFFF?text=Portugués+Página+1',
+      '/images/oferta-academica/portugues/brochure/1.png',
+      '/images/oferta-academica/portugues/brochure/2.png',
+      '/images/oferta-academica/portugues/brochure/3.png',
+      '/images/oferta-academica/portugues/brochure/4.png'
     ]
   },
   'pruebas-internacionales': {
@@ -119,8 +124,9 @@ export const languageDetails: Record<string, Language> = {
     aiHint: 'international exam certificate',
     pdfUrl: '#',
     brochureImagePages: [
-      'https://placehold.co/800x1100/9c27b0/ffffff?text=Brochure+Pruebas+1',
-      'https://placehold.co/800x1100/9c27b0/ffffff?text=Brochure+Pruebas+2',
+      '/images/oferta-academica/pruebas-internacionales/brochure/1.png',
+      '/images/oferta-academica/pruebas-internacionales/brochure/2.png',
+      '/images/oferta-academica/pruebas-internacionales/brochure/3.png',
     ]
   },
 };
@@ -137,7 +143,13 @@ export const englishPrograms: EnglishProgram[] = [
     image: 'https://placehold.co/800x450/f87171/ffffff?text=Inglés+5-6+años',
     aiHint: 'children playing learning',
     pdfUrl: '#', // Placeholder
-    brochureImagePages: ['https://placehold.co/800x1100/f87171/ffffff?text=Brochure+5-6+años']
+    brochureImagePages: [
+      '/images/oferta-academica/ingles/brochure/5-6/1.png',
+      '/images/oferta-academica/ingles/brochure/5-6/2.png',
+      '/images/oferta-academica/ingles/brochure/5-6/3.png',
+      '/images/oferta-academica/ingles/brochure/5-6/4.png',
+      '/images/oferta-academica/ingles/brochure/5-6/5.png',
+    ]
   },
   {
     name: 'Inglés para niños de 7 y 8 años',
@@ -149,7 +161,13 @@ export const englishPrograms: EnglishProgram[] = [
     image: 'https://placehold.co/800x450/fb923c/ffffff?text=Inglés+7-8+años',
     aiHint: 'children classroom drawing',
     pdfUrl: '#', // Placeholder
-    brochureImagePages: ['https://placehold.co/800x1100/fb923c/ffffff?text=Brochure+7-8+años']
+    brochureImagePages: [
+      '/images/oferta-academica/ingles/brochure/7-8/1.png',
+      '/images/oferta-academica/ingles/brochure/7-8/2.png',
+      '/images/oferta-academica/ingles/brochure/7-8/3.png',
+      '/images/oferta-academica/ingles/brochure/7-8/4.png',
+      '/images/oferta-academica/ingles/brochure/7-8/5.png',
+    ]
   },
   {
     name: 'Inglés para niños de 9 y 10 años',
@@ -161,7 +179,18 @@ export const englishPrograms: EnglishProgram[] = [
     image: 'https://placehold.co/800x450/fbbf24/ffffff?text=Inglés+9-10+años',
     aiHint: 'pre-teens studying group',
     pdfUrl: '#', // Placeholder
-    brochureImagePages: ['https://placehold.co/800x1100/fbbf24/ffffff?text=Brochure+9-10+años']
+    brochureImagePages: [
+      '/images/oferta-academica/ingles/brochure/9-10/1.png',
+      '/images/oferta-academica/ingles/brochure/9-10/2.png',
+      '/images/oferta-academica/ingles/brochure/9-10/3.png',
+      '/images/oferta-academica/ingles/brochure/9-10/4.png',
+      '/images/oferta-academica/ingles/brochure/9-10/5.png',
+      '/images/oferta-academica/ingles/brochure/9-10/6.png',
+      '/images/oferta-academica/ingles/brochure/9-10/7.png',
+      '/images/oferta-academica/ingles/brochure/9-10/8.png',
+      '/images/oferta-academica/ingles/brochure/9-10/9.png',
+
+    ]
   },
   {
     name: 'Inglés para adolescentes de 11 a 14 años',
@@ -173,7 +202,18 @@ export const englishPrograms: EnglishProgram[] = [
     image: 'https://placehold.co/800x450/a3e635/ffffff?text=Inglés+11-14+años',
     aiHint: 'teenagers studying computer',
     pdfUrl: '#', // Placeholder
-    brochureImagePages: ['https://placehold.co/800x1100/a3e635/ffffff?text=Brochure+11-14+años']
+    brochureImagePages: [
+      '/images/oferta-academica/ingles/brochure/11-14/1.png',
+      '/images/oferta-academica/ingles/brochure/11-14/2.png',
+      '/images/oferta-academica/ingles/brochure/11-14/3.png',
+      '/images/oferta-academica/ingles/brochure/11-14/4.png',
+      '/images/oferta-academica/ingles/brochure/11-14/5.png',
+      '/images/oferta-academica/ingles/brochure/11-14/6.png',
+      '/images/oferta-academica/ingles/brochure/11-14/7.png',
+      '/images/oferta-academica/ingles/brochure/11-14/8.png',
+      '/images/oferta-academica/ingles/brochure/11-14/9.png',
+
+    ]
   },
   {
     name: 'Inglés para mayores de 15 años',
@@ -186,8 +226,13 @@ export const englishPrograms: EnglishProgram[] = [
     aiHint: 'university students conversation',
     pdfUrl: 'https://www.unillanos.edu.co/images/documentos/dependencias/CEI/INSTRUCTIVO_INGLES_2024-1.pdf',
     brochureImagePages: [
-      'https://placehold.co/800x1100/60a5fa/ffffff?text=Brochure+15%2B+Página+1',
-      'https://placehold.co/800x1100/60a5fa/ffffff?text=Brochure+15%2B+Página+2',
+      '/images/oferta-academica/ingles/brochure/15+/1.png',
+      '/images/oferta-academica/ingles/brochure/15+/2.png',
+      '/images/oferta-academica/ingles/brochure/15+/3.png',
+      '/images/oferta-academica/ingles/brochure/15+/4.png',
+      '/images/oferta-academica/ingles/brochure/15+/5.png',
+      '/images/oferta-academica/ingles/brochure/15+/6.png',
+      '/images/oferta-academica/ingles/brochure/15+/7.png',
     ]
   },
   {
@@ -200,6 +245,14 @@ export const englishPrograms: EnglishProgram[] = [
     image: 'https://placehold.co/800x450/c084fc/ffffff?text=Habilidades+Avanzadas',
     aiHint: 'advanced skills workshop',
     pdfUrl: '#', // Placeholder
-    brochureImagePages: ['https://placehold.co/800x1100/c084fc/ffffff?text=Brochure+Habilidades']
+    brochureImagePages: [
+      '/images/oferta-academica/ingles/brochure/15+/1.png',
+      '/images/oferta-academica/ingles/brochure/15+/2.png',
+      '/images/oferta-academica/ingles/brochure/15+/3.png',
+      '/images/oferta-academica/ingles/brochure/15+/4.png',
+      '/images/oferta-academica/ingles/brochure/15+/5.png',
+      '/images/oferta-academica/ingles/brochure/15+/6.png',
+      '/images/oferta-academica/ingles/brochure/15+/7.png',
+    ]
   }
 ];
